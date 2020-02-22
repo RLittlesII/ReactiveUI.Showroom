@@ -1,7 +1,6 @@
-using ReactiveUI;
 using Showroom.Base;
 
-namespace Showroom
+namespace Showroom.Main
 {
     public class MainViewModel : ViewModelBase
     {

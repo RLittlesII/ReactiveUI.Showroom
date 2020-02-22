@@ -1,6 +1,6 @@
 using Splat;
 
-namespace Showroom
+namespace Showroom.Composition
 {
     public static class MutableDependencyResolverExtensions
     {

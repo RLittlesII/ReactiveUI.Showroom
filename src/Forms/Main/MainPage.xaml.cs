@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Showroom.Base;
-using Xamarin.Forms;
+﻿using Showroom.Base;
 
-namespace Showroom
+namespace Showroom.Main
 {
     public partial class MainPage : ContentPageBase<MainViewModel>
     {

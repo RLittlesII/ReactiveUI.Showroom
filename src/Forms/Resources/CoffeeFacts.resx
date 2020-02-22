@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Benguet" xml:space="preserve">
+    <value>Arabica coffee is believed to have been introduced to the Cordillera highlands in the mid-19th century. According to William F. Pack, an American governor of Benguet (1909-1912) during the American colonial period, arabica coffee was first introduced to the Cordilleras in 1875 by a Spanish military governor of Benguet, Manuel Scheidnegal y Sera. He initially planted them in government gardens in the lowlands of the province to evaluate their potential as a regional crop. However, frequent rains and the low altitude were not ideal conditions for the plants. The next governor, Enrique Oraa, had greater success when he transplanted them at higher altitudes in 1877 and distributed seedlings among the native Igorot people. In 1881 however, the then governor, a certain Villena, attempted to coerce the natives into growing coffee by ordering them to do so. In protest, native communities destroyed arabica plantations at the advice of village elders.
+
+However, a native chief named Camising from Kabayan purportedly saw the benefits of the crop and introduced arabica coffee to his own people. His successes convinced neighboring communities to take up coffee cultivation on their own. Benguet coffee was part of the booming coffee industry of the Philippines during the 1880s and 1890s, which reached annual coffee exports of up to 16 million pounds. However, coffee rust devastated the plantations in 1899 and coffee production plummeted. By 1917, annual total export of coffee from the Philippines only amounted to around 3,000 pounds.
+
+Pack praised Benguet coffee even then for its flavor and spear-headed a plan to rehabilite the industry while he was governor. However, his efforts and that of the American colonial government failed.</value>
+  </data>
+  <data name="Bourbon" xml:space="preserve">
+    <value>Bourbon is the most famous of the Bourbon-descended varieties (see History of Bourbon and Typica for a full history of this group of coffees). It is a tall variety characterized by relatively low production, susceptibility to the major diseases, and excellent cup quality.
+
+French missionaries introduced Bourbon from Yemen to Bourbon Island (now La Réunion)—giving it the name it has today—in the early 1700s. Until the mid-19th century, Bourbon did not leave the island. But beginning in the mid-1800s, the variety spread to new parts of the world as the missionaries moved to establish footholds in Africa and the Americas.
+
+The Bourbon variety was introduced to Brazil around 1860, and from there rapidly spread north into other parts of South and Central America, where it is still cultivated today. Here it became mixed with other Bourbon-related varieties, introduced from India as well as Ethiopian landraces. Nowadays, there are many Bourbon-like varieties found in East Africa, but none exactly match the distinct Bourbon variety that can be found in Latin America.
+
+Today in Latin America, Bourbon itself has largely been replaced by varieties that descend from it (notably including Caturra, Catuai, and Mundo Novo), although Bourbon itself it is still cultivated in El Salvador, Guatemala, Honduras, and Peru.</value>
+  </data>
+  <data name="Catuai" xml:space="preserve">
+    <value>A cross between highly productive Mundo Novo and compact Caturra, made by the Instituto Agronomico (IAC) of Sao Paulo State in Campinas, Brazil. The plant is highly productive compared to Bourbon, in part because of its small size, which allows plants to be closely spaced; it can be planted at nearly double the density. The plant’s shape makes it relatively easy apply pest and disease treatments. It is mainly characterized by great vigor and its low height; it is less compact than Caturra. It is highly susceptible to coffee leaf rust.
+
+Catuaí derives from the Guarani multo mom, meaning “very good." Today, it is considered to have good but not great cup quality. There are yellow-fruited and red-fruited types, and have since been many selections in different countries. The cultivar was created in 1949 from a crossing of yellow Caturra and Mundo Novo, and initially called H-2077.
+
+The variety was released in Brazil 1972 after pedigree selection (selection of individual plants through successive generations) and is in wide cultivation there. In Brazil, there are multiple lines of Catuai available; some are notable for their high productivity. The Catuaí lines transferred to Central America seem to be less productive; studies in Honduras and Costa Rica found no significant differences in productivity have been observed between Caturra and Catuaí.
+
+It was first introduced in Honduras in 1979, where it was tested by Instituto Hondureño del Café (IHCAFÉ). It was released commercially in 1983, after IHCAFÉ selected two lines for planting. In Honduras today, Catui accounts for nearly half of the Arabica coffee in cultivation. Researchers at IHCAFÉ are actively pursuing breeding with Catuai, including creating hybrid crosses between Catuai and Timor Hybrid lines.
+
+It is also economically important in Costa Rica, where a yellow-fruiting Catuai was introduced in 1985, whose descendants have spread widely through the country. It was introduced into Guatemala in 1970; currently about 20% of the country’s production is Catuai. It has a negligible presence in other Central American countries.
+
+Catuai, whose small stature allows it to be planted densely and harvested more efficiently, led in part to the intensification of full-sun coffee cultivation in Central America in the 1970s and 1980s.
+
+A similar variety called Garnica was developed by the Mexican Coffee Institute (INMECAFÉ) in 1960-61, through the crossing of Mundo Novo with Caturra Amarillo. Adaptation trials were established in 1978-79, but INMECAFÉ was dissolved in 1989 before pedigree selections were completed. Further selections were made by private producers in Mexico, but the variety is difficult to trace.</value>
+  </data>
+  <data name="Caturra" xml:space="preserve">
+    <value>Caturra is a natural mutation of the Bourbon variety. It was discovered on a plantation in the state of Minas Gerais in Brazil sometime between 1915 and 1918.
+
+Caturra has a single-gene mutation that causes the plant to grow smaller (called dwarfism). Its name derives from the Guarani word meaning "small." It is also called "Nanico." After Caturra’s discovery, selections were made by the Instituto Agronomico (IAC) of Sao Paulo State in Campinas, Brazil, starting in 1937. Breeders were interested in Caturra’s small size, which allows plants to be placed closer together, and its closely spaced secondary branches, which enable it to produce more fruit in the same space.
+
+The selection process for Caturra was called mass selection, meaning that a group of individuals are selected based on their superior performance, seed from these plants is bulked to form a new generation, and then the process is repeated. The variety was never officially released in Brazil, but has become common in Central America.
+
+It was introduced in Guatemala in the 1940s, but widespread commercial adoption didn’t happen for another three decades. From Guatemala, it was introduced to Costa Rica, Honduras, and Panama. Today, it is one of the most economically important coffees in Central America, to the extent that it is often used as a “benchmark” against which new cultivars are tested. In Colombia, Caturra was thought to represent nearly half of the country’s production until a government-sponsored program beginning in 2008 incentivised renovation of over three billion coffee trees with the leaf-rust resistant Castillo variety (which has Caturra parentage).
+
+Caturra led in part to the intensification of coffee cultivation through higher density planting, often in full sun, that took place in the region in the second half of the 20th century.
+
+Caturra is also known for being one of the parents the so-called “Catimor” family of cultivars. Various lines of the coffee-leaf-rust-resistant Timor Hybrid were crossed with Caturra to produce a dwarf plant with rust resistance. Examples of Catimor varieties include: Costa Rica 95, Catisic, Lempira, and IHCAFE 90.</value>
+  </data>
+  <data name="Charrier" xml:space="preserve">
+    <value>Charrier coffee, (Coffea charrieriana), species of coffee plant (genus Coffea, family Rubiaceae) found in Central Africa that was the first discovered to produce caffeine-free beans (seeds). Endemic to the Bakossi Forest Reserve in western Cameroon, the plant inhabits steep rocky slopes of wet rainforests. Charrier coffee was first collected in 1983; however, it was first described scientifically in 2008 after a morphological study discovered that it did not conform to descriptions of known Coffea species. The plant is named after André Charrier, a French botanist and geneticist known for his extensive work in coffee breeding and research.</value>
+  </data>
+  <data name="Geisha" xml:space="preserve">
+    <value>This variety was originally collected from coffee forests in Ethiopia in the 1930s. From there, it was sent to the Lyamungu research station in Tanzania, and then brought to Centro Agronómico Tropical de Investigación y Enseñanza (CATIE) in Central America in the 1953, where it was logged as accession T2722. It was distributed throughout Panama via CATIE in the 1960s after it had been recognized for tolerance to coffee leaf rust. However, the plant's branches were brittle and not favored by farmers so it was not widely planted. The coffee came to prominence in 2005 when the Peterson family of Boquete, Panama, entered it into the "Best of Panama" competition and auction. It received exceptionally high marks and broke the then-record for green coffee auction prices, selling for over $20/pound.
+
+There is significant confusion about Geisha because there are multiple genetically distinct plant types that have been referred to as Geisha, many of which share similar geographic origins in Ethiopia. Recent genetic diversity analyses conducted by World Coffee Research confirm that Panamanian Geisha descendent from T2722 is distinct and uniform. It is associated with extremely high cup quality when the plants are managed well at high altitude, and is known for its delicate floral, jasmine, and peach-like aromas.
+
+The spellings Geisha and Gesha are often used interchangeably, relating to the fact that there is no set translation from the dialects of Ethiopia to English. The coffee was first recorded in germplasm records with the spelling “Geisha,” and coffee researchers and germplasm banks have mostly maintained that spelling over many decades, leading that spelling to be promoted and used first in the coffee industry. The coffee was originally collected in Ethiopia in a region close to a mountain whose name is most commonly rendered in English as Gesha. Consequently, many in the coffee industry have preferred to rescue that spelling.</value>
+  </data>
+</root>

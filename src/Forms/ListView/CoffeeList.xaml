@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
+                      xmlns:listView="clr-namespace:Showroom.ListView;assembly=Showroom"
+                      x:Class="Showroom.ListView.CoffeeList"
+                      x:TypeArguments="listView:CoffeeListViewModel"
+                      NavigationPage.HasBackButton="True">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView AutomationId="CoffeeListView" x:Name="CoffeeListView" HasUnevenRows="True" RowHeight="180" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <listView:CoffeeCell />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</base:ContentPageBase>

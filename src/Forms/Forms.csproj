@@ -66,9 +66,34 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="DynamicData" Version="6.14.8" />
+        <PackageReference Include="Pharmacist.MsBuild" Version="1.*" PrivateAssets="all" />
+        <PackageReference Include="Pharmacist.Common" Version="1.*" />
         <PackageReference Include="ReactiveUI.XamForms" Version="11.1.23" />
         <PackageReference Include="Sextant.XamForms" Version="2.5.1" />
         <PackageReference Include="Splat.Serilog" Version="9.3.11" />
-        <PackageReference Include="Xamarin.Forms" Version="4.3.0.991250" />
+        <PackageReference Include="Xamarin.Forms" Version="4.5.*" />
+        <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.3.7" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\CoffeeFacts.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>CoffeeFacts.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\CoffeeTastes.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>CoffeeTastes.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Resources\CoffeeFacts.Designer.cs">
+        <DependentUpon>CoffeeFacts.resx</DependentUpon>
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+      </Compile>
+      <Compile Update="Resources\CoffeeTastes.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>CoffeeTastes.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 </Project>

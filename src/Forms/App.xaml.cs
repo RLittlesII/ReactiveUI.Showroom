@@ -1,4 +1,7 @@
 ﻿using System;
+using Showroom.Composition;
+using Showroom.ListView;
+using Showroom.Main;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,9 +15,9 @@ namespace Showroom
         {
             InitializeComponent();
 
-            var composition = new Composition(platformRegistrar);
+            var composition = new Composition.Composition(platformRegistrar);
 
-            MainPage = composition.StartPage<MainViewModel>();
+            MainPage = composition.StartPage<CoffeeListViewModel>();
         }
 
         protected override void OnStart()

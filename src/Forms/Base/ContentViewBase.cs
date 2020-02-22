@@ -5,11 +5,11 @@ using ReactiveUI.XamForms;
 
 namespace Showroom.Base
 {
-    public abstract class ContentPageBase<T> : ReactiveContentPage<T>, IDisposable
-        where T : ViewModelBase
+    public abstract class ContentViewBase<T> : ReactiveContentView<T>, IDisposable
+        where T : class, IReactiveObject
     {
-        protected CompositeDisposable ControlBindings { get; } = new CompositeDisposable();
-        
+        protected CompositeDisposable ViewBindings { get; } = new CompositeDisposable();
+
         public void Dispose()
         {
             Dispose(true);
@@ -20,7 +20,7 @@ namespace Showroom.Base
         {
             if (disposing)
             {
-                ControlBindings?.Dispose();
+                ViewBindings?.Dispose();
             }
         }
     }

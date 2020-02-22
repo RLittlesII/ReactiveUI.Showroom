@@ -1,4 +1,5 @@
 using Serilog;
+using Showroom.Composition;
 using Splat;
 
 namespace Showroom.iOS

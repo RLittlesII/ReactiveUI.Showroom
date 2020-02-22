@@ -12,6 +12,17 @@ A repository to show case the features of the ReactiveUI platform.
 | [![azurepipelines-history-badge]][azurepipelines-history] |
 | [![githubactions-badge]][githubactions]                   |
 
+## Powered by Open Source
+
+### ReactiveUI 
+- [DynamicData](https://github.com/reactiveui/DynamicData)
+- [Pharmacist](https://github.com/reactiveui/Pharmacist)
+- [ReactiveUI](https://github.com/reactiveui/ReactiveUI)
+- [Sextant](https://github.com/reactiveui/Sextant)
+- [Splat](https://github.com/reactiveui/splat)
+
+### UI
+- [Pancake View](https://github.com/sthewissen/Xamarin.Forms.PancakeView)
 
 [github-license]: https://github.com/rlittlesii/ReactiveUI.Showroom/blob/master/LICENSE
 [github-license-badge]: https://img.shields.io/github/license/rlittlesii/ReactiveUI.Showroom.svg?style=flat 'License'

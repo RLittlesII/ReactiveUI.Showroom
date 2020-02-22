@@ -1,4 +1,5 @@
 using Serilog;
+using Showroom.Composition;
 using Splat;
 using Splat.Serilog;
 

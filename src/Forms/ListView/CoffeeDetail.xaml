@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
+                      xmlns:listView="clr-namespace:Showroom.ListView;assembly=Showroom"
+                      x:Class="Showroom.ListView.CoffeeDetail"
+                      x:TypeArguments="listView:CoffeeDetailViewModel">
+    <ContentPage.Content>
+        <Grid BackgroundColor="Chocolate">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Grid.RowSpan="3" AutomationId="Image" Aspect="AspectFill" Source="{Binding Detail.Image}" />
+            <BoxView Grid.Row="2" Grid.RowSpan="3" AutomationId="DetailCard" BackgroundColor="White" CornerRadius="30,30,0,0" />
+            <Label Grid.Row="2" AutomationId="Species" Text="{Binding Detail.Species}" Margin="0, 50, 0, 0" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="16" FontAttributes="Bold" />
+            <Label Grid.Row="2" AutomationId="Britannica" Grid.RowSpan="3" Text="{Binding Detail.Britannica}" TranslationY="90" HorizontalOptions="Center" Margin="16,0" FontSize="12" VerticalOptions="Start" LineBreakMode="WordWrap" />
+            <Frame Grid.Row="1" AutomationId="Pill" BackgroundColor="{StaticResource DarkLeaf}" HasShadow="True" TranslationY="90" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="30" HeightRequest="24" WidthRequest="175">
+                <Label AutomationId="Name" Text="{Binding Detail.Name}" TextColor="#d6dce9" FontSize="22" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</base:ContentPageBase>

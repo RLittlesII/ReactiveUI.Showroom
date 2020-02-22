@@ -1,0 +1,85 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RootNamespace></RootNamespace>
+    <IsPackable>False</IsPackable>
+    <NoWarn>CS0649;CS0169</NoWarn>
+    <Configurations>Debug;Release;DebugMock;Mock;DebugDev;Dev;Test;DebugTest;Store</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugMock|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\DebugMock</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile></DocumentationFile>
+    <NoWarn>CS0649;CS0169</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugMock|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\DebugMock</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugMock|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\DebugMock</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Mock|AnyCPU' ">
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Mock</OutputPath>
+    <DefineConstants>TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile></DocumentationFile>
+    <NoWarn>CS0649;CS0169</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Mock|iPhone' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Mock</OutputPath>
+    <DefineConstants>TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Mock|iPhoneSimulator' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Mock</OutputPath>
+    <DefineConstants>TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="GitVersion.Tool" Version="5.1.3" ExcludeAssets="All" />
+    <PackageReference Include="NuGet.CommandLine" Version="5.1.0" />
+    <PackageReference Include="Nuke.Common" Version="0.24.*" />
+    <PackageReference Include="Rocket.Surgery.Nuke.Xamarin" Version="0.13.3" />
+    <PackageReference Include="ReportGenerator" Version="4.2.15" />
+    <PackageReference Include="xunit.runner.console" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <NukeSpecificationFiles Include="**\*.json" Exclude="bin\**;obj\**" />
+    <NukeExternalFiles Include="**\*.*.ext" Exclude="bin\**;obj\**" />
+    <None Remove="*.csproj.DotSettings;*.ref.*.txt" />
+
+    <!-- Common build related files -->
+    <None Include="..\build.ps1" />
+    <None Include="..\build.sh" />
+    <None Include="..\.nuke" />
+    <None Include="..\global.json" Condition="Exists('..\global.json')" />
+    <None Include="..\nuget.config" Condition="Exists('..\nuget.config')" />
+    <None Include="..\azure-pipelines.yml" Condition="Exists('..\azure-pipelines.yml')" />
+    <None Include="..\Jenkinsfile" Condition="Exists('..\Jenkinsfile')" />
+    <None Include="..\appveyor.yml" Condition="Exists('..\appveyor.yml')" />
+    <None Include="..\.travis.yml" Condition="Exists('..\.travis.yml')" />
+    <None Include="..\GitVersion.yml" Condition="Exists('..\GitVersion.yml')" />
+  </ItemGroup>
+
+</Project>

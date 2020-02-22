@@ -11,6 +11,59 @@
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugMock|AnyCPU' ">
+      <DebugType>pdbonly</DebugType>
+      <Optimize>false</Optimize>
+      <OutputPath>bin\DebugMock\netstandard2.0</OutputPath>
+      <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+      <WarningLevel>4</WarningLevel>
+      <DocumentationFile></DocumentationFile>
+      <DebugSymbols>true</DebugSymbols>
+      <IntermediateOutputPath>obj\Debug\netstandard2.0</IntermediateOutputPath>
+      <NoWarn>1701;1702</NoWarn>
+      <NoStdLib>true</NoStdLib>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugMock|iPhone' ">
+      <IntermediateOutputPath>obj\iPhone\DebugMock</IntermediateOutputPath>
+      <DebugType></DebugType>
+      <Optimize>false</Optimize>
+      <OutputPath>bin\iPhone\DebugMock</OutputPath>
+      <DefineConstants></DefineConstants>
+      <NoWarn></NoWarn>
+      <NoStdLib>false</NoStdLib>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugMock|iPhoneSimulator' ">
+      <IntermediateOutputPath>obj\iPhoneSimulator\DebugMock</IntermediateOutputPath>
+      <DebugType></DebugType>
+      <Optimize>false</Optimize>
+      <OutputPath>bin\iPhoneSimulator\DebugMock</OutputPath>
+      <DefineConstants></DefineConstants>
+      <NoWarn></NoWarn>
+      <NoStdLib>false</NoStdLib>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Mock|AnyCPU' ">
+      <IntermediateOutputPath>obj\Release\netstandard2.0</IntermediateOutputPath>
+      <DebugType>portable</DebugType>
+      <Optimize>true</Optimize>
+      <OutputPath>bin\Mock\netstandard2.0</OutputPath>
+      <DefineConstants>TRACE;RELEASE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+      <WarningLevel>4</WarningLevel>
+      <DocumentationFile></DocumentationFile>
+      <NoWarn>1701;1702</NoWarn>
+      <NoStdLib>true</NoStdLib>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Mock|iPhone' ">
+      <IntermediateOutputPath>obj\Release\netstandard2.0</IntermediateOutputPath>
+      <Optimize>true</Optimize>
+      <OutputPath>bin\Mock\netstandard2.0</OutputPath>
+      <DefineConstants>TRACE;RELEASE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Mock|iPhoneSimulator' ">
+      <IntermediateOutputPath>obj\Release\netstandard2.0</IntermediateOutputPath>
+      <Optimize>true</Optimize>
+      <OutputPath>bin\Mock\netstandard2.0</OutputPath>
+      <DefineConstants>TRACE;RELEASE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+    </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="DynamicData" Version="6.14.8" />
         <PackageReference Include="ReactiveUI.XamForms" Version="11.1.23" />

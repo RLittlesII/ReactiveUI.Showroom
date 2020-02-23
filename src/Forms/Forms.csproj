@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <AssemblyName>Showroom</AssemblyName>
+        <RootNamespace>Showroom</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -10,6 +12,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540"/>
+        <PackageReference Include="DynamicData" Version="6.14.8" />
+        <PackageReference Include="ReactiveUI.XamForms" Version="11.1.23" />
+        <PackageReference Include="Sextant.XamForms" Version="2.5.1" />
+        <PackageReference Include="Splat.Serilog" Version="9.3.11" />
+        <PackageReference Include="Xamarin.Forms" Version="4.3.0.991250" />
     </ItemGroup>
 </Project>

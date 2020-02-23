@@ -22,7 +22,7 @@ namespace Showroom.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(new iOSRegistrar()));
 
             return base.FinishedLaunching(app, options);
         }

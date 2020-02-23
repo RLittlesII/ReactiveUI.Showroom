@@ -8,11 +8,13 @@ namespace Showroom
 {
     public partial class App : Application
     {
-        public App()
+        public App(IPlatformRegistrar platformRegistrar)
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            var composition = new Composition(platformRegistrar);
+
+            MainPage = composition.StartPage<MainViewModel>();
         }
 
         protected override void OnStart()

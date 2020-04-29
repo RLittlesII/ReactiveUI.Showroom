@@ -1,0 +1,58 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches:
+    - master
+    - feature/*
+
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    - name: Fetch all history for all tags and branches
+      run: git fetch --prune --unshallow
+
+    - name: Setup Xamarin
+      uses: maxim-lobanov/setup-xamarin@v1.1
+      with:
+        # Version of Mono to select
+        mono-version: 6.8
+        # Version of Xamarin.iOS to select
+        xamarin-ios-version: 13.16
+        # Version of Xamarin.Mac to select
+        # xamarin-mac-version: # optional
+        # Version of Xamarin.Android to select
+        # xamarin-android-version: # optional
+        # Version of Xcode to use with Xamarin.iOS and Xamarin.Mac
+        xcode-version: 11.4.1
+
+    - name: Install GitVersion
+      uses: david-driscoll/gittools-actions/gitversion/setup@feature/export-environment-github
+      with:
+          versionSpec: '5.1.x'
+
+    - name: Use GitVersion
+      id: gitversion # step id used as reference for output values
+      uses: david-driscoll/gittools-actions/gitversion/execute@feature/export-environment-github
+
+    - name: Install Nuke
+      run: dotnet tool install Nuke.GlobalTool --global
+
+    - name: Nuke Build
+      run: nuke --configuration DebugMock --target-platform iPhoneSimulator

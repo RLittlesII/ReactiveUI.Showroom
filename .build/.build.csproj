@@ -78,6 +78,7 @@
     <None Include="..\azure-pipelines.yml" Condition="Exists('..\azure-pipelines.yml')" />
     <None Include="..\Jenkinsfile" Condition="Exists('..\Jenkinsfile')" />
     <None Include="..\appveyor.yml" Condition="Exists('..\appveyor.yml')" />
+    <None Include="..\.github\workflows\main.yml" Condition="Exists('..\.github\workflows\main.yml')" />
     <None Include="..\.travis.yml" Condition="Exists('..\.travis.yml')" />
     <None Include="..\GitVersion.yml" Condition="Exists('..\GitVersion.yml')" />
   </ItemGroup>

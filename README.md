@@ -10,6 +10,7 @@ A repository to show case the features of the ReactiveUI platform.
 | --------------------------------------------------------- |
 | [![azurepipelines-badge]][azurepipelines]                 |
 | [![azurepipelines-history-badge]][azurepipelines-history] |
+| [![githubactions-badge]][githubactions]                   |
 
 
 [github-license]: https://github.com/rlittlesii/ReactiveUI.Showroom/blob/master/LICENSE
@@ -20,3 +21,5 @@ A repository to show case the features of the ReactiveUI platform.
 [azurepipelines-badge]: https://img.shields.io/azure-devops/build/rlittlesii/github/18.svg?color=98C6FF&label=azure%20pipelines&logo=azuredevops&logoColor=98C6FF&style=flat 'Azure Pipelines Status'
 [azurepipelines-history]: https://dev.azure.com/rlittlesii/github/_build?definitionId=18&branchName=master
 [azurepipelines-history-badge]: https://buildstats.info/azurepipelines/chart/rlittlesii/github/18?includeBuildsFromPullRequest=false 'Azure Pipelines History'
+[githubactions-badge]: https://github.com/RLittlesII/ReactiveUI.Showroom/workflows/Actions/badge.svg
+[githubactions]: https://github.com/RLittlesII/ReactiveUI.Showroom/actions

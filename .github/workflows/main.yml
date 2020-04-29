@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Actions
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -31,15 +31,8 @@ jobs:
     - name: Setup Xamarin
       uses: maxim-lobanov/setup-xamarin@v1.1
       with:
-        # Version of Mono to select
         mono-version: 6.8
-        # Version of Xamarin.iOS to select
         xamarin-ios-version: 13.16
-        # Version of Xamarin.Mac to select
-        # xamarin-mac-version: # optional
-        # Version of Xamarin.Android to select
-        # xamarin-android-version: # optional
-        # Version of Xcode to use with Xamarin.iOS and Xamarin.Mac
         xcode-version: 11.4.1
 
     - name: Install GitVersion

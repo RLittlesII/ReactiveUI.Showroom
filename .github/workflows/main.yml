@@ -44,8 +44,6 @@ jobs:
       id: gitversion # step id used as reference for output values
       uses: david-driscoll/gittools-actions/gitversion/execute@feature/export-environment-github
 
-    - name: Install Nuke
-      run: dotnet tool install Nuke.GlobalTool --global
-
     - name: Nuke Build
-      run: nuke --configuration DebugMock --target-platform iPhoneSimulator
+      shell: bash
+      run: ./build.sh --configuration DebugMock --target-platform iPhoneSimulator

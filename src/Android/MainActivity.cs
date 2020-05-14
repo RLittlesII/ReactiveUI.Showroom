@@ -8,7 +8,7 @@ using Android.OS;
 
 namespace Showroom.Android
 {
-    [Activity(Label = "Showroom", Theme = "@style/MainTheme", MainLauncher = true,
+    [Activity(Label = "Showroom", Theme = "@style/MainTheme", Icon = "@mipmap/ic_launcher", MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {

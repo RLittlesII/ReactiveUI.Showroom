@@ -6,6 +6,7 @@ using Sextant.XamForms;
 using Showroom.Base;
 using Showroom.ListView;
 using Showroom.Main;
+using Showroom.Navigation;
 using Showroom.ValueConverters;
 using Splat;
 using Splat.Serilog;
@@ -13,9 +14,9 @@ using Xamarin.Forms;
 
 namespace Showroom.Composition
 {
-    public class Composition
+    public class CompositionRoot
     {
-        public Composition(IPlatformRegistrar registrar)
+        public CompositionRoot(IPlatformRegistrar registrar)
         {
             Locator.CurrentMutable.InitializeReactiveUI();
             Sextant.Sextant.Instance.InitializeForms();
@@ -46,15 +47,19 @@ namespace Showroom.Composition
         private static void RegisterViews(IMutableDependencyResolver mutableDependencyResolver)
         {
             mutableDependencyResolver.RegisterView<MainPage, MainViewModel>();
+            mutableDependencyResolver.RegisterView<NavigationRoot, NavigationRootViewModel>();
             mutableDependencyResolver.RegisterView<CoffeeList, CoffeeListViewModel>();
             mutableDependencyResolver.RegisterView<CoffeeDetail, CoffeeDetailViewModel>();
+            mutableDependencyResolver.RegisterView<Collection, CollectionViewModel>();
         }
 
         private static void RegisterViewModels(IMutableDependencyResolver mutableDependencyResolver)
         {
             mutableDependencyResolver.RegisterViewModel<MainViewModel>();
+            mutableDependencyResolver.RegisterViewModel<NavigationRootViewModel>();
             mutableDependencyResolver.RegisterViewModel<CoffeeListViewModel>();
             mutableDependencyResolver.RegisterViewModel<CoffeeDetailViewModel>();
+            mutableDependencyResolver.RegisterViewModel<CollectionViewModel>();
         }
 
         private static void RegisterServices(IMutableDependencyResolver mutableDependencyResolver)

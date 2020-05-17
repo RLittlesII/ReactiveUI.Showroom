@@ -2,6 +2,7 @@
 using Showroom.Composition;
 using Showroom.ListView;
 using Showroom.Main;
+using Showroom.Navigation;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,9 +16,9 @@ namespace Showroom
         {
             InitializeComponent();
 
-            var composition = new Composition.Composition(platformRegistrar);
-
-            MainPage = composition.StartPage<CoffeeListViewModel>();
+            var composition = new CompositionRoot(platformRegistrar);
+            composition.StartPage<MainViewModel>();
+            MainPage = new NavigationRoot();
         }
 
         protected override void OnStart()

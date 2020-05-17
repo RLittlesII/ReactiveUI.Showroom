@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FFImageLoading.Forms.Platform;
+using FFImageLoading.Svg.Forms;
 using Foundation;
 using UIKit;
 
@@ -22,6 +24,10 @@ namespace Showroom.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            CachedImageRenderer.Init();
+            var ignore = typeof(SvgCachedImage);
+
             LoadApplication(new App(new iOSRegistrar()));
 
             return base.FinishedLaunching(app, options);

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:ViewCellBase xmlns="http://xamarin.com/schemas/2014/forms"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
+                   xmlns:navigation="clr-namespace:Showroom.Navigation;assembly=Showroom"
+                   x:Class="Showroom.Navigation.NavigationItemCell"
+                   x:TypeArguments="navigation:NavigationItemViewModel">
+
+       <StackLayout Orientation="Horizontal" Margin="10">
+           <Label Text="{Binding Icon}"
+                  Margin="8,0,0,0"
+                  HorizontalOptions="Start"
+                  VerticalOptions="Center"
+                  TextColor="White"
+                  FontFamily="{StaticResource FontAwesomeSolid}" />
+           
+        <Label Text="{Binding Title}"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="Center"
+               TextColor="White" />
+           
+        <Label Text="{StaticResource AngleRight}"
+               Margin="0,0,8,0"
+               HorizontalOptions="End"
+               VerticalOptions="Center"
+               TextColor="White"
+               FontSize="16"
+               FontFamily="{StaticResource FontAwesomeSolid}" />
+    </StackLayout>
+</base:ViewCellBase>

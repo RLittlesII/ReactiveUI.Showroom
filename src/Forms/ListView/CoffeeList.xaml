@@ -6,7 +6,8 @@
                       xmlns:listView="clr-namespace:Showroom.ListView;assembly=Showroom"
                       x:Class="Showroom.ListView.CoffeeList"
                       x:TypeArguments="listView:CoffeeListViewModel"
-                      NavigationPage.HasBackButton="True">
+                      NavigationPage.HasBackButton="True" 
+                      IconImageSource="hamburger.png">
     <ContentPage.Content>
         <StackLayout>
             <ListView AutomationId="CoffeeListView" x:Name="CoffeeListView" HasUnevenRows="True" RowHeight="180" SeparatorVisibility="None">

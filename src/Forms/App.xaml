@@ -4,5 +4,30 @@
              x:Class="Showroom.App">
     <Application.Resources>
         <Color x:Key="DarkLeaf">#20270b</Color>
+
+        <Color x:Key="DarkGradientBlue">#319AF3</Color>
+        <Color x:Key="LightGradientBlue">#194D7A</Color>
+        <Color x:Key="LightGray">#CCCCCC</Color>
+        <Color x:Key="Gray">#666666</Color>
+        <Color x:Key="DarkGray">#3D3D3D</Color>
+
+        <x:String x:Key="MenuIcon">&#xf0c9;</x:String>
+        <x:String x:Key="AngleRight">&#xf105;</x:String>
+        <x:String x:Key="ListIcon">&#xf022;</x:String>
+        <x:String x:Key="GroupIcon">&#xf5fd;</x:String>
+        <x:String x:Key="RoundLogo">https://raw.githubusercontent.com/reactiveui/styleguide/master/logo/circle.png</x:String>
+        
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeBrands">
+            <On Platform="iOS" 
+                Value="FontAwesome5Brands-Regular" />
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
+            <On Platform="iOS" 
+                Value="FontAwesome5Free-Solid" />
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
+            <On Platform="iOS" 
+                Value="FontAwesome5Free-Regular" />
+        </OnPlatform>
     </Application.Resources>
 </Application>

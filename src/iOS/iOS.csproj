@@ -293,10 +293,16 @@
     <BundleResource Include="Resources\Catuai-Bean.jpg" />
     <BundleResource Include="Resources\Caturra-Bean.jpg" />
     <BundleResource Include="Resources\Charrieriana-Bean.jpg" />
+    <BundleResource Include="Resources\FontAwesome5Brands.otf" />
+    <BundleResource Include="Resources\FontAwesome5Regular.otf" />
+    <BundleResource Include="Resources\FontAwesome5Solid.otf" />
     <BundleResource Include="Resources\Geisha-Bean.jpg" />
+    <BundleResource Include="Resources\hamburger.png" />
+    <BundleResource Include="Resources\hamburger@2x.png" />
     <BundleResource Include="Resources\Kona-Bean-2.jpg" />
     <BundleResource Include="Resources\Kona-Bean-3.jpg" />
     <BundleResource Include="Resources\Kona-Bean.jpg" />
+    <BundleResource Include="Resources\menu-icn.png" />
     <BundleResource Include="Resources\Mount-Meru-Coffee-Bean.jpg" />
   </ItemGroup>
   <ItemGroup>

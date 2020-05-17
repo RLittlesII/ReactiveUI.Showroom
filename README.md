@@ -23,6 +23,7 @@ A repository to show case the features of the ReactiveUI platform.
 
 ### UI
 - [Pancake View](https://github.com/sthewissen/Xamarin.Forms.PancakeView)
+- [FFImage Loading](https://github.com/luberda-molinet/FFImageLoading)
 
 [github-license]: https://github.com/rlittlesii/ReactiveUI.Showroom/blob/master/LICENSE
 [github-license-badge]: https://img.shields.io/github/license/rlittlesii/ReactiveUI.Showroom.svg?style=flat 'License'

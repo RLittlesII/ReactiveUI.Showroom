@@ -18,14 +18,21 @@
         <x:String x:Key="RoundLogo">https://raw.githubusercontent.com/reactiveui/styleguide/master/logo/circle.png</x:String>
         
         <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeBrands">
+            <On Platform="Android" 
+                Value="FontAwesome5Brands.otf#Regular" />
             <On Platform="iOS" 
                 Value="FontAwesome5Brands-Regular" />
         </OnPlatform>
         <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
+            <On Platform="Android" 
+                Value="FontAwesome5Solid.otf#Regular" /> 
             <On Platform="iOS" 
                 Value="FontAwesome5Free-Solid" />
         </OnPlatform>
-        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular"><On Platform="Android" 
+          Value="FontAwesome5Brands.otf#Regular" />
+            <On Platform="Android" 
+                Value="FontAwesome5Brands.otf#Regular" />
             <On Platform="iOS" 
                 Value="FontAwesome5Free-Regular" />
         </OnPlatform>

@@ -25,6 +25,10 @@ A repository to show case the features of the ReactiveUI platform.
 - [Pancake View](https://github.com/sthewissen/Xamarin.Forms.PancakeView)
 - [FFImage Loading](https://github.com/luberda-molinet/FFImageLoading)
 
+### Build
+- [Nuke Build](https://github.com/nuke-build/nuke/)
+- [Rocket.Surgery.Nuke](https://github.com/RocketSurgeonsGuild/Nuke)
+
 [github-license]: https://github.com/rlittlesii/ReactiveUI.Showroom/blob/master/LICENSE
 [github-license-badge]: https://img.shields.io/github/license/rlittlesii/ReactiveUI.Showroom.svg?style=flat 'License'
 [codecov]: https://codecov.io/gh/rlittlesii/ReactiveUI.Showroom

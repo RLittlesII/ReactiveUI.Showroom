@@ -10,7 +10,7 @@
                                      NavigationPage.HasBackButton="True">
     
     <MasterDetailPage.Master>
-        <ContentPage Title="Master" Padding="0,0,0,0" IconImageSource="hamburger.png">
+        <ContentPage x:Name="Master" Title="Master" Padding="0,0,0,0" IconImageSource="hamburger.png">
             <StackLayout
                 BackgroundColor="{StaticResource Gray}">
                 <ffimage:SvgCachedImage

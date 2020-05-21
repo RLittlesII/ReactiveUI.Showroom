@@ -1,19 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Reactive.Subjects;
-using System.Text;
-using System.Threading.Tasks;
 using ReactiveUI;
 using ReactiveUI.XamForms;
 using Sextant.XamForms;
 using Splat;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Showroom.Navigation
 {
@@ -56,9 +49,10 @@ namespace Showroom.Navigation
                 })
                 .DisposeWith(_masterDetailBindings);
 
-            this.Events()
-                .IsPresentedChanged
-                .Subscribe()
+            this.WhenAnyValue(x => x.IsPresented)
+                .Where(x => Device.RuntimePlatform == Device.iOS)
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Subscribe(_ => Master.IconImageSource = ImageSource.FromFile("hamburger.png"))
                 .DisposeWith(_masterDetailBindings);
 
             ViewModel = new NavigationRootViewModel();

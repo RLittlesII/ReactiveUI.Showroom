@@ -8,6 +8,13 @@
                                      x:Class="Showroom.Navigation.NavigationRoot"
                                      x:TypeArguments="showroom:NavigationRootViewModel"
                                      NavigationPage.HasBackButton="True">
+    <MasterDetailPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/Fonts.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </MasterDetailPage.Resources>
     
     <MasterDetailPage.Master>
         <ContentPage x:Name="Master" Title="Master" Padding="0,0,0,0" IconImageSource="hamburger.png">

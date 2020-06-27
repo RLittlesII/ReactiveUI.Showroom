@@ -36,13 +36,13 @@ jobs:
         xcode-version: 11.4.1
 
     - name: Install GitVersion
-      uses: david-driscoll/gittools-actions/gitversion/setup@feature/export-environment-github
+      uses: gittools/actions/gitversion/setup@v0.9.3
       with:
-          versionSpec: '5.1.x'
+          versionSpec: '5.3.x'
 
     - name: Use GitVersion
       id: gitversion # step id used as reference for output values
-      uses: david-driscoll/gittools-actions/gitversion/execute@feature/export-environment-github
+      uses: gittools/actions/gitversion/execute@v0.9.3
 
     - name: Nuke Build
       shell: bash

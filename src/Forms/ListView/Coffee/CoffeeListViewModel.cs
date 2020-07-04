@@ -4,12 +4,10 @@ using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI;
 using Sextant;
-using Showroom.Base;
 using Splat;
 
 namespace Showroom.ListView

@@ -1,6 +1,5 @@
 using System.Reactive.Disposables;
 using ReactiveUI;
-using Showroom.Base;
 using Xamarin.Forms;
 
 namespace Showroom.ListView

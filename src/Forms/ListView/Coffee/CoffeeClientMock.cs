@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using Showroom.Base;
 using Showroom.Constants;
-using Xamarin.Forms;
 
 namespace Showroom.ListView
 {

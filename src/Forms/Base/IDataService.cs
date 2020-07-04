@@ -2,7 +2,7 @@ using System;
 using System.Reactive;
 using DynamicData;
 
-namespace Showroom.Base
+namespace Showroom
 {
     public interface IDataService
     {

@@ -16,6 +16,11 @@
         <x:String x:Key="AngleRight">&#xf105;</x:String>
         <x:String x:Key="ListIcon">&#xf022;</x:String>
         <x:String x:Key="GroupIcon">&#xf5fd;</x:String>
+
+        <x:String x:Key="PauseIcon">&#xf04c;</x:String>
+        <x:String x:Key="PlusIcon">&#xf067;</x:String>
+        <x:String x:Key="RemoveIcon">&#xf068;</x:String>
+
         <x:String x:Key="RoundLogo">https://raw.githubusercontent.com/reactiveui/styleguide/master/logo/circle.png</x:String>
     </Application.Resources>
 </Application>

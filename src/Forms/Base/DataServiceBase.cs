@@ -3,9 +3,8 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
 using DynamicData;
-using Showroom.ListView;
 
-namespace Showroom.Base
+namespace Showroom
 {
     public class DataServiceBase<T> : IDataService<T>
         where T : Dto

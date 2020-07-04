@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Showroom.Base
+namespace Showroom
 {
     public static class StringExtensions
     {

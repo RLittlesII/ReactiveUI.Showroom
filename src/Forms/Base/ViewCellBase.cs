@@ -1,8 +1,7 @@
 using System.Reactive.Disposables;
 using ReactiveUI.XamForms;
-using Showroom.ListView;
 
-namespace Showroom.Base
+namespace Showroom
 {
     public abstract class ViewCellBase<T> : ReactiveViewCell<T>
         where T : ItemViewModelBase

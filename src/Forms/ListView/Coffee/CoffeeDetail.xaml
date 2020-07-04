@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+<showroom:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
                       xmlns:listView="clr-namespace:Showroom.ListView;assembly=Showroom"
+                      xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
                       x:Class="Showroom.ListView.CoffeeDetail"
                       x:TypeArguments="listView:CoffeeDetailViewModel">
     <ContentPage.Content>
@@ -24,4 +24,4 @@
             </Frame>
         </Grid>
     </ContentPage.Content>
-</base:ContentPageBase>
+</showroom:ContentPageBase>

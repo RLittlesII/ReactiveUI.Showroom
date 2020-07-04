@@ -69,6 +69,11 @@
         <PackageReference Include="Pharmacist.MsBuild" Version="1.*" PrivateAssets="all" />
         <PackageReference Include="Pharmacist.Common" Version="1.*" />
         <PackageReference Include="ReactiveUI.XamForms" Version="11.*" />
+        <PackageReference Include="Refit" Version="5.1.67" />
+        <PackageReference Include="RxUI.Plugins.Popup" Version="0.4.0" />
+        <PackageReference Include="Rocket.Surgery.Airframe.Data" Version="0.7.*" />
+        <PackageReference Include="Rocket.Surgery.Airframe.Popup" Version="0.7.*" />
+        <PackageReference Include="Rocket.Surgery.Airframe.Synthetic" Version="0.7.*" />
         <PackageReference Include="Sextant.XamForms" Version="2.*" />
         <PackageReference Include="Splat.Serilog" Version="9.3.11" />
         <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
@@ -77,6 +82,9 @@
         <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     </ItemGroup>
     <ItemGroup>
+      <EmbeddedResource Include="Resources\reactiveui.gif">
+          <LogicalName>reactiveui.gif</LogicalName>
+      </EmbeddedResource>
       <EmbeddedResource Update="Resources\CoffeeFacts.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>CoffeeFacts.Designer.cs</LastGenOutput>
@@ -94,6 +102,38 @@
         <Generator></Generator>
       </EmbeddedResource>
       <EmbeddedResource Update="CollectionView\Collection.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="ListView\Search\SearchListView.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="ListView\ListOptions.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="ListView\Search\NewItem.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="ListView\Coffee\CoffeeCell.xaml">
+        <SubType>Designer</SubType>
+        <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="ListView\Coffee\CoffeeDetail.xaml">
+        <SubType>Designer</SubType>
+        <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="ListView\Coffee\CoffeeList.xaml">
+        <SubType>Designer</SubType>
+        <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="ListView\OptionViewCell.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="ListView\Search\ItemViewCell.xaml">
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
@@ -118,5 +158,30 @@
       <Compile Update="CollectionView\Collection.xaml.cs">
         <DependentUpon>Collection.xaml</DependentUpon>
       </Compile>
+      <Compile Update="ListView\Search\SearchListView.xaml.cs">
+        <DependentUpon>SearchListView.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="ListView\ListOptions.xaml.cs">
+        <DependentUpon>ListViewOptions.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="ListView\Coffee\CoffeeCell.xaml.cs">
+        <DependentUpon>CoffeeCell.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="ListView\Coffee\CoffeeDetail.xaml.cs">
+        <DependentUpon>CoffeeDetail.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="ListView\Coffee\CoffeeList.xaml.cs">
+        <DependentUpon>CoffeeList.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="ListView\OptionViewCell.xaml.cs">
+        <DependentUpon>OptionViewCell.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="ListView\Query" />
     </ItemGroup>
 </Project>

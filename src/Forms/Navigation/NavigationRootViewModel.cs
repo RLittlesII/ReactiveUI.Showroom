@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Reactive;
 using ReactiveUI;
 using Sextant;
-using Showroom.Base;
 using Showroom.ListView;
 using Splat;
 using static FontAwesome.FontAwesomeIcons;
@@ -21,7 +20,7 @@ namespace Showroom.Navigation
 
             NavigationItems = new ObservableCollection<NavigationItemViewModel>
             {
-                new NavigationItemViewModel { Title = "List View", Icon = ListAlt, IViewFor = typeof(CoffeeListViewModel) },
+                new NavigationItemViewModel { Title = "List View", Icon = ListAlt, IViewFor = typeof(ListOptionsViewModel) },
                 new NavigationItemViewModel { Title = "Collection View", Icon = LayerGroup, IViewFor = typeof(CollectionViewModel) }
             };
 

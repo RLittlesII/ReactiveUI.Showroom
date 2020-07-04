@@ -49,6 +49,7 @@ namespace Showroom.Navigation
                 })
                 .DisposeWith(_masterDetailBindings);
 
+            // HACK: [rlittlesii: July 04, 2020] This is a hack around a Xamarin.Forms iOS issue.
             this.WhenAnyValue(x => x.IsPresented)
                 .Where(x => Device.RuntimePlatform == Device.iOS)
                 .ObserveOn(RxApp.MainThreadScheduler)

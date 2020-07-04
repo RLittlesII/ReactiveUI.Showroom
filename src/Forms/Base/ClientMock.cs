@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Showroom.Base
+namespace Showroom
 {
     public class ClientMock<T> : IClient
         where T : Dto

@@ -41,14 +41,20 @@ namespace Showroom.Search
                     .DistinctUntilChanged()
                     .Select(search);
 
-            _drinkDataService
+            var items = _drinkDataService
                 .ChangeSet
-                .Transform(x => new ItemViewModel { Id = x.Id, Title = x.Title, Type = x.Type, Description = x.Description})
+                .Transform(x => new ItemViewModel { Id = x.Id, Title = x.Title, Type = x.Type, Description = x.Description});
+
+            items
+                .MergeMany((item, id) => item.Remove)
+                .InvokeCommand(this, x => x.Remove)
+                .DisposeWith(ViewModelSubscriptions);
+
+            items
                 .AutoRefresh(x => x.Id)
                 .DeferUntilLoaded()
                 .Filter(searchChanged)
                 .Sort(SortExpressionComparer<ItemViewModel>.Descending(x => x.Type).ThenByAscending(x => x.Id))
-                .ObserveOn(RxApp.MainThreadScheduler)
                 .Bind(out _items)
                 .DisposeMany()
                 .Subscribe()
@@ -56,7 +62,7 @@ namespace Showroom.Search
 
             Add = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteAdd).DisposeWith(ViewModelSubscriptions);
             Refresh = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteRefresh).DisposeWith(ViewModelSubscriptions);
-            Remove = ReactiveCommand.CreateFromObservable<ItemViewModel, Unit>(ExecuteRemove, Observable.Return(true)).DisposeWith(ViewModelSubscriptions);
+            Remove = ReactiveCommand.CreateFromObservable(ExecuteRemove, Observable.Return(true)).DisposeWith(ViewModelSubscriptions);
 
             this.WhenAnyObservable(x => x.Refresh.IsExecuting)
                 .StartWith(false)
@@ -73,7 +79,7 @@ namespace Showroom.Search
 
         public ReactiveCommand<EventArgs, Unit> Refresh { get; set; }
 
-        public ReactiveCommand<ItemViewModel, Unit> Remove { get; set; }
+        public ReactiveCommand<Unit, Unit> Remove { get; set; }
 
         public ReadOnlyObservableCollection<ItemViewModel> Items => _items;
 
@@ -104,6 +110,6 @@ namespace Showroom.Search
                         .Subscribe(observer)
                         .DisposeWith(ViewModelSubscriptions));
 
-        private IObservable<Unit> ExecuteRemove(ItemViewModel item) => _drinkDataService.Delete(item.Id);
+        private IObservable<Unit> ExecuteRemove() => _drinkDataService.Delete(Guid.Empty);
     }
 }

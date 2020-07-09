@@ -1,4 +1,5 @@
 using System;
+using System.Reactive;
 using ReactiveUI;
 using Rocket.Surgery.Airframe.Synthetic;
 
@@ -10,6 +11,13 @@ namespace Showroom.Search
         private string _title;
         private string _description;
         private DrinkType _type;
+
+        public ItemViewModel()
+        {
+            Remove = ReactiveCommand.Create(() => { });
+        }
+
+        public ReactiveCommand<Unit, Unit> Remove { get; set; }
 
         public Guid Id
         {

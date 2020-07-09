@@ -5,6 +5,7 @@
                    xmlns:navigation="clr-namespace:Showroom.Navigation;assembly=Showroom"
                    xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
                    x:Class="Showroom.Navigation.NavigationItemCell"
+                   x:DataType="navigation:NavigationItemViewModel"
                    x:TypeArguments="navigation:NavigationItemViewModel">
 
        <StackLayout Orientation="Horizontal" Margin="10">

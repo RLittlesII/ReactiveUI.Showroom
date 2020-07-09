@@ -22,9 +22,6 @@ namespace Showroom.ListView
         {
             _viewStackService = Locator.Current.GetService<IParameterViewStackService>();
             _coffeeService = Locator.Current.GetService<ICoffeeService>();
-
-            CoffeeDetails = ReactiveCommand.CreateFromObservable<CoffeeCellViewModel, Unit>(ExecuteNavigate).DisposeWith(ViewModelSubscriptions);
-
             _coffeeService
                 .ChangeSet
                 .Transform(x => new CoffeeCellViewModel(x.Id, x.Name, x.Species, x.Regions, x.Image))
@@ -33,6 +30,9 @@ namespace Showroom.ListView
                 .DisposeMany()
                 .Subscribe()
                 .DisposeWith(ViewModelSubscriptions);
+
+            CoffeeDetails = ReactiveCommand.CreateFromObservable<CoffeeCellViewModel, Unit>(ExecuteNavigate).DisposeWith(ViewModelSubscriptions);
+
         }
 
         public ReactiveCommand<CoffeeCellViewModel, Unit> CoffeeDetails { get; set; }

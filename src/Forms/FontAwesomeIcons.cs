@@ -1,6 +1,4 @@
-using System;
-
-namespace FontAwesome
+namespace Showroom
 {
     /// <summary>
     /// The unicode values for all FontAwesome icons.

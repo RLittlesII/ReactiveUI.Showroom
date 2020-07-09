@@ -1,8 +1,9 @@
 using System.Reactive.Disposables;
 using ReactiveUI;
+using Showroom.Base;
 using Xamarin.Forms;
 
-namespace Showroom.ListView
+namespace Showroom.Coffee
 {
     public partial class CoffeeCell : ViewCellBase<CoffeeCellViewModel>
     {

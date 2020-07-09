@@ -1,9 +1,9 @@
+using Showroom.Base;
 using Xamarin.Forms.Xaml;
 
-namespace Showroom.ListView
+namespace Showroom.Coffee
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CoffeeDetail : ContentPageBase<CoffeeDetailViewModel>
+    public partial class CoffeeDetail
     {
         public CoffeeDetail()
         {

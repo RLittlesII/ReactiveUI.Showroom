@@ -4,9 +4,9 @@ using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using ReactiveUI;
 using Sextant;
-using Splat;
+using Showroom.Base;
 
-namespace Showroom.ListView
+namespace Showroom.Coffee
 {
     public class CoffeeDetailViewModel : ViewModelBase
     {
@@ -29,10 +29,15 @@ namespace Showroom.ListView
         private IObservable<Unit> ExecuteGetDetail(Guid id) =>
             Observable
                 .Create<Unit>(observer =>
-                {
-                    _detail = _coffeeService.Read(id).WhereNotNull().ToProperty(this, x => x.Detail);
-                    return Disposable.Empty;
-                });
+                    _coffeeService
+                        .Read(id)
+                        .Where(x => x != null)
+                        .ToProperty(
+                            this,
+                            nameof(Detail),
+                            out _detail,
+                            deferSubscription: true,
+                            scheduler: RxApp.MainThreadScheduler));
 
         public ReactiveCommand<Guid, Unit> GetDetail { get; set; }
 

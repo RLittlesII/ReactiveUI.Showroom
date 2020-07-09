@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<showroom:ViewCellBase xmlns="http://xamarin.com/schemas/2014/forms"
+<base:ViewCellBase xmlns="http://xamarin.com/schemas/2014/forms"
                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                    xmlns:navigation="clr-namespace:Showroom.Navigation;assembly=Showroom"
                    xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
+                   xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
                    x:Class="Showroom.Navigation.NavigationItemCell"
+                   x:DataType="navigation:NavigationItemViewModel"
                    x:TypeArguments="navigation:NavigationItemViewModel">
 
        <StackLayout Orientation="Horizontal" Margin="10">
@@ -28,4 +30,4 @@
                FontSize="16"
                FontFamily="{StaticResource FontAwesomeSolid}" />
     </StackLayout>
-</showroom:ViewCellBase>
+</base:ViewCellBase>

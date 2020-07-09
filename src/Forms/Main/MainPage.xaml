@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<local:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:local="clr-namespace:Showroom"
-                      xmlns:main="clr-namespace:Showroom.Main;assembly=Showroom"
                       xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
+                      xmlns:main="clr-namespace:Showroom.Main;assembly=Showroom"
                       x:Class="Showroom.Main.MainPage"
                       x:TypeArguments="main:MainViewModel">
 
@@ -12,4 +13,4 @@
         <forms:CachedImage Source="{Binding Image}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="300" HeightRequest="300" />
     </StackLayout>
 
-</local:ContentPageBase>
+</base:ContentPageBase>

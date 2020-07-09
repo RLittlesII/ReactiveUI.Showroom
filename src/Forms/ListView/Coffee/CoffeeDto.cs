@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using Showroom.Base;
 
-namespace Showroom.ListView
+namespace Showroom.Coffee
 {
     public class CoffeeDto : Dto
     {

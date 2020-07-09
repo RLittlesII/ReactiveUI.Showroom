@@ -1,13 +1,11 @@
 using System;
 using System.Reactive;
 using System.Reactive.Disposables;
-using System.Reactive.Linq;
 using System.Threading.Tasks;
 using ReactiveUI;
 using Sextant;
-using Splat;
 
-namespace Showroom
+namespace Showroom.Base
 {
     public abstract class ViewModelBase : ReactiveObject, INavigable, IDestructible
     {

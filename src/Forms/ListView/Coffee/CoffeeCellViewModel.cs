@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ReactiveUI;
+using Showroom.Base;
+using Showroom.Extensions;
 
-namespace Showroom.ListView
+namespace Showroom.Coffee
 {
     public class CoffeeCellViewModel : ItemViewModelBase
     {

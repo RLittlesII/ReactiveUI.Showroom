@@ -8,6 +8,8 @@ using System.Reactive.Threading.Tasks;
 using ReactiveUI;
 using Rg.Plugins.Popup.Contracts;
 using Rocket.Surgery.Airframe.Synthetic;
+using Showroom.Base;
+using Showroom.Extensions;
 using Splat;
 
 namespace Showroom.Search

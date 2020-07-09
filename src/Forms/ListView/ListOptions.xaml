@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<showroom:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
                       xmlns:search="clr-namespace:Showroom.Search;assembly=Showroom"
+                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
                       x:Class="Showroom.ListOptions"
                       x:TypeArguments="showroom:ListOptionsViewModel">
     <ContentPage.Content>
@@ -11,10 +12,10 @@
             <ListView x:Name="Options">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <search:OptionViewCell />
+                        <showroom:OptionViewCell />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>
-</showroom:ContentPageBase>
+</base:ContentPageBase>

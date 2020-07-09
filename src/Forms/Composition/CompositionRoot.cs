@@ -6,7 +6,8 @@ using Rocket.Surgery.Airframe.Synthetic;
 using Serilog;
 using Sextant;
 using Sextant.XamForms;
-using Showroom.ListView;
+using Showroom.Base;
+using Showroom.Coffee;
 using Showroom.Main;
 using Showroom.Navigation;
 using Showroom.Scroll;
@@ -15,7 +16,7 @@ using Showroom.ValueConverters;
 using Splat;
 using Splat.Serilog;
 using Xamarin.Forms;
-using CoffeeClientMock = Showroom.ListView.CoffeeClientMock;
+using CoffeeClientMock = Showroom.Coffee.CoffeeClientMock;
 using SearchListViewModel = Showroom.Search.SearchListViewModel;
 
 namespace Showroom.Composition
@@ -75,7 +76,7 @@ namespace Showroom.Composition
             dependencyResolver.RegisterViewModel(() => new CoffeeDetailViewModel(dependencyResolver.GetService<ICoffeeService>()));
             dependencyResolver.RegisterViewModel<CollectionViewModel>();
             dependencyResolver.RegisterViewModel(() => new SearchListViewModel(dependencyResolver.GetService<IDrinkService>()));
-            dependencyResolver.RegisterViewModel<NewItemViewModel>();
+            // dependencyResolver.RegisterViewModel<NewItemViewModel>();
             dependencyResolver.RegisterViewModel(() => new InfiniteScrollViewModel(dependencyResolver.GetService<IInventoryDataService>()));
         }
 

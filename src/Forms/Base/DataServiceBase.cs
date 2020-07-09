@@ -4,7 +4,7 @@ using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
 using DynamicData;
 
-namespace Showroom
+namespace Showroom.Base
 {
     public class DataServiceBase<T> : IDataService<T>
         where T : Dto
@@ -43,6 +43,7 @@ namespace Showroom
                 .Get<T>(id)
                 .ToObservable()
                 .WhereNotNull()
+                .Take(1)
                 .Do(_ => SourceCache.AddOrUpdate(_));
 
         /// <inheritdoc />

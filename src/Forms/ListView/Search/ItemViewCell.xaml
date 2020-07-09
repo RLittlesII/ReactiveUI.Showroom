@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<reactiveui:ReactiveViewCell x:TypeArguments="search:ItemViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+<reactiveui:ReactiveViewCell xmlns="http://xamarin.com/schemas/2014/forms"
                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                            xmlns:reactiveui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
                            xmlns:search="clr-namespace:Showroom.Search;assembly=Showroom"
-                           x:Class="Showroom.Search.ItemViewCell">
+                           x:Class="Showroom.Search.ItemViewCell"
+                           x:TypeArguments="search:ItemViewModel"
+                           x:DataType="search:ItemViewModel">
     <ViewCell.ContextActions>
         <MenuItem Text="Remove"
                   IsDestructive="True"
@@ -26,7 +28,6 @@
         <Button Grid.Column="2"
                 Text="{StaticResource RemoveIcon}"
                 FontFamily="{StaticResource FontAwesomeSolid}"
-                Command="{Binding Source={RelativeSource AncestorType={x:Type search:SearchListViewModel}}, Path=Remove}"
-                CommandParameter="{Binding Source={RelativeSource Self}, Path=BindingContext}" />
+                Command="{Binding Remove}" />
     </Grid>
 </reactiveui:ReactiveViewCell>

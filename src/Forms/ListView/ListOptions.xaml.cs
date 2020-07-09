@@ -2,6 +2,7 @@ using System;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using ReactiveUI;
+using Showroom.Base;
 using Xamarin.Forms;
 
 namespace Showroom

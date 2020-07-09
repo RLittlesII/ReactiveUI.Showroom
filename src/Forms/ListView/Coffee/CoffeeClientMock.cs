@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using Showroom.Base;
 using Showroom.Constants;
 
-namespace Showroom.ListView
+namespace Showroom.Coffee
 {
     public class CoffeeClientMock : ClientMock<CoffeeDto>
     {

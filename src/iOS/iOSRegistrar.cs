@@ -12,6 +12,8 @@ namespace Showroom.iOS
                 new LoggerConfiguration()
                     .WriteTo
                     .NSLog()
+                    .MinimumLevel
+                    .Debug()
                     .CreateLogger();
         }
     }

@@ -1,6 +1,6 @@
 using System;
 
-namespace Showroom
+namespace Showroom.Base
 {
     public abstract class Dto
     {

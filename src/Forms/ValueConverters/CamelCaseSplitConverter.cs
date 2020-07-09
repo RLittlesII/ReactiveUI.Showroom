@@ -1,5 +1,6 @@
 using System;
 using ReactiveUI;
+using Showroom.Extensions;
 
 namespace Showroom.ValueConverters
 {

@@ -8,9 +8,9 @@ using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI;
 using Sextant;
-using Splat;
+using Showroom.Base;
 
-namespace Showroom.ListView
+namespace Showroom.Coffee
 {
     public class CoffeeListViewModel : ViewModelBase
     {
@@ -33,6 +33,9 @@ namespace Showroom.ListView
                 .DisposeMany()
                 .Subscribe()
                 .DisposeWith(ViewModelSubscriptions);
+
+            CoffeeDetails = ReactiveCommand.CreateFromObservable<CoffeeCellViewModel, Unit>(ExecuteNavigate).DisposeWith(ViewModelSubscriptions);
+
         }
 
         public ReactiveCommand<CoffeeCellViewModel, Unit> CoffeeDetails { get; set; }

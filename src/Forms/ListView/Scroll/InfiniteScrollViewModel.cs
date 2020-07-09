@@ -7,6 +7,7 @@ using System.Reactive.Subjects;
 using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI;
+using Showroom.Base;
 
 namespace Showroom.Scroll
 {

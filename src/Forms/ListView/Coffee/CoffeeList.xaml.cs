@@ -3,9 +3,10 @@ using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using ReactiveUI;
+using Showroom.Base;
 using Xamarin.Forms;
 
-namespace Showroom.ListView
+namespace Showroom.Coffee
 {
     public partial class CoffeeList : ContentPageBase<CoffeeListViewModel>
     {

@@ -2,7 +2,7 @@ using System;
 using System.Reactive.Disposables;
 using ReactiveUI.XamForms;
 
-namespace Showroom
+namespace Showroom.Base
 {
     public abstract class ContentPageBase<T> : ReactiveContentPage<T>, IDisposable
         where T : ViewModelBase

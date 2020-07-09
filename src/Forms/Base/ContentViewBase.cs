@@ -3,7 +3,7 @@ using System.Reactive.Disposables;
 using ReactiveUI;
 using ReactiveUI.XamForms;
 
-namespace Showroom
+namespace Showroom.Base
 {
     public abstract class ContentViewBase<T> : ReactiveContentView<T>, IDisposable
         where T : class, IReactiveObject

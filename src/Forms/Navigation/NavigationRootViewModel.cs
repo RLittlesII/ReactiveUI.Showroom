@@ -3,9 +3,9 @@ using System.Collections.ObjectModel;
 using System.Reactive;
 using ReactiveUI;
 using Sextant;
-using Showroom.ListView;
+using Showroom.Base;
 using Splat;
-using static FontAwesome.FontAwesomeIcons;
+using static Showroom.FontAwesomeIcons;
 
 namespace Showroom.Navigation
 {

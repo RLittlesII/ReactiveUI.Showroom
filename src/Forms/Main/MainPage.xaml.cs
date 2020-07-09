@@ -1,6 +1,4 @@
-﻿using System.Reactive.Disposables;
-using ReactiveUI;
-using Xamarin.Forms;
+﻿using Showroom.Base;
 
 namespace Showroom.Main
 {

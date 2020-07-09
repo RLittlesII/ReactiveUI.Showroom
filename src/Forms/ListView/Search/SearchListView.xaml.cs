@@ -3,9 +3,9 @@ using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
-using DynamicList;
 using ReactiveUI;
 using Rg.Plugins.Popup.Services;
+using Showroom.Base;
 using Splat;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -54,9 +54,11 @@ namespace Showroom.Search
                 .AddItem
                 .RegisterHandler(context =>
                 {
-                    // HACK: [rlittlesii: July 03, 2020] This is why "service location is an anti-pattern".
-                    // HACK: [rlittlesii: July 03, 2020] Because it allows developers to implement bad patterns.
-                    // HACK: [rlittlesii: July 03, 2020] Service Location is a tool that can be abused, not a pattern!
+                    // HACK: [rlittlesii: July 03, 2020]
+                    // This is why "service location is an anti-pattern".
+                    // Because it allows developers to implement bad patterns.
+                    // Service Location is a tool that can be abused, not a pattern!
+                    // HACK: [rlittlesii: July 03, 2020]
                     NewItem confirmationPage = (NewItem)Locator.Current.GetService<IViewFor<NewItemViewModel>>();
 
                     PopupNavigation

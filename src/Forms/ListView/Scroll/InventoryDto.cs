@@ -1,3 +1,5 @@
+using Showroom.Base;
+
 namespace Showroom.Scroll
 {
     public class InventoryDto : Dto

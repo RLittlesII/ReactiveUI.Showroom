@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<showroom:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:listView="clr-namespace:Showroom.ListView;assembly=Showroom"
                       xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
-                      x:Class="Showroom.ListView.CoffeeDetail"
+                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
+                      xmlns:listView="clr-namespace:Showroom.Coffee;assembly=Showroom"
+                      x:Class="Showroom.Coffee.CoffeeDetail"
                       x:TypeArguments="listView:CoffeeDetailViewModel">
     <ContentPage.Content>
         <Grid BackgroundColor="Chocolate">
@@ -24,4 +25,4 @@
             </Frame>
         </Grid>
     </ContentPage.Content>
-</showroom:ContentPageBase>
+</base:ContentPageBase>

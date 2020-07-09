@@ -4,7 +4,7 @@ using System.Reactive.Concurrency;
 using ReactiveUI;
 using Splat;
 
-namespace Showroom.Composition
+namespace Showroom
 {
     public class ShowroomExceptionHandler : IObserver<Exception>, IEnableLogger
     {
@@ -19,7 +19,7 @@ namespace Showroom.Composition
 
             this.Log().Error(value);
 
-            RxApp.MainThreadScheduler.Schedule(() => throw value);
+            // RxApp.MainThreadScheduler.Schedule(() => throw value);
         }
 
         /// <inheritdoc/>
@@ -32,7 +32,7 @@ namespace Showroom.Composition
 
             this.Log().Error(error);
 
-            RxApp.MainThreadScheduler.Schedule(() => throw error);
+            // RxApp.MainThreadScheduler.Schedule(() => throw error);
         }
 
         /// <inheritdoc/>

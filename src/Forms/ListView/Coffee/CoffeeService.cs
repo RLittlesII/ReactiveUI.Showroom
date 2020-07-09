@@ -1,4 +1,6 @@
-namespace Showroom.ListView
+using Showroom.Base;
+
+namespace Showroom.Coffee
 {
     public class CoffeeService : DataServiceBase<CoffeeDto>, ICoffeeService
     {

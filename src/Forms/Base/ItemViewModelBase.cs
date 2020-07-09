@@ -1,6 +1,6 @@
 using ReactiveUI;
 
-namespace Showroom
+namespace Showroom.Base
 {
     public abstract class ItemViewModelBase : ReactiveObject
     {

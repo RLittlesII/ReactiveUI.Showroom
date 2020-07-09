@@ -34,4 +34,8 @@
     <Style x:Key="DrinkImageStyle" TargetType="Image">
         <Setter Property="Margin" Value="6" />
     </Style>
+    
+    <Style x:Key="ButtonCorner" TargetType="Button">
+        <Setter Property="CornerRadius" Value="5" />
+    </Style>
 </ResourceDictionary>

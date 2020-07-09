@@ -1,7 +1,9 @@
 using System.Reactive.Disposables;
 using ReactiveUI;
+using Showroom.Base;
+using Showroom.Extensions;
 
-namespace Showroom.Search
+namespace Showroom
 {
     public partial class OptionViewCell : ViewCellBase<OptionViewModel>
     {

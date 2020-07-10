@@ -1,0 +1,42 @@
+using System;
+using System.Threading.Tasks;
+
+namespace Showroom
+{
+    public interface IHubClient : IDisposable
+    {
+        /// <summary>
+        /// Connect to the Hub.
+        /// </summary>
+        /// <returns>A task to monitor the progress.</returns>
+        Task Connect();
+
+        /// <summary>
+        /// Invokes a method with the provided name.
+        /// </summary>
+        /// <param name="methodName">The method name.</param>
+        /// <typeparam name="T">The return type.</typeparam>
+        /// <returns>A completion value.</returns>
+        Task<T> InvokeAsync<T>(string methodName);
+    }
+
+    public abstract class HubClientBase : IHubClient
+    {
+        public abstract Task Connect();
+
+        public abstract Task<T> InvokeAsync<T>(string methodName);
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+    
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+            }
+        }
+    }
+}

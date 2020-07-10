@@ -9,7 +9,12 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <forms:CachedImage Source="{Binding Image}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="300" HeightRequest="300" />
+        <forms:CachedImage
+            Source="{Binding Image}"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand"
+            WidthRequest="300"
+            HeightRequest="300" />
     </StackLayout>
 
 </local:ContentPageBase>

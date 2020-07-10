@@ -137,6 +137,14 @@
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
+      <EmbeddedResource Update="ListView\Scroll\InfiniteLoad.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="ListView\Scroll\LoadDataViewCell.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
       <Compile Update="Resources\CoffeeFacts.Designer.cs">
@@ -179,6 +187,12 @@
       <Compile Update="ListView\OptionViewCell.xaml.cs">
         <DependentUpon>OptionViewCell.xaml</DependentUpon>
         <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="ListView\Scroll\InfiniteLoad.xaml.cs">
+        <DependentUpon>InfiniteLoad.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="ListView\Scroll\LoadDataViewCell.xaml.cs">
+        <DependentUpon>LoasDataViewCell.xaml</DependentUpon>
       </Compile>
     </ItemGroup>
     <ItemGroup>

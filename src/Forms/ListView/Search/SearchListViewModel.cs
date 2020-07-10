@@ -32,7 +32,8 @@ namespace Showroom.Search
                     }
 
                     var lower = searchTerm.ToLower();
-                    return viewModel.Title.ToLower().Contains(lower) || (viewModel.Description?.ToLower().Contains(lower) ?? false);
+                    return viewModel.Title.ToLower().Contains(lower) ||
+                           (viewModel.Description?.ToLower().Contains(lower) ?? false);
                 };
 
             var searchChanged =
@@ -43,7 +44,11 @@ namespace Showroom.Search
 
             _drinkDataService
                 .ChangeSet
-                .Transform(x => new ItemViewModel { Id = x.Id, Title = x.Title, Type = x.Type, Description = x.Description})
+                .Transform(x => 
+                    new ItemViewModel
+                    {
+                        Id = x.Id, Title = x.Title, Type = x.Type, Description = x.Description
+                    })
                 .AutoRefresh(x => x.Id)
                 .DeferUntilLoaded()
                 .Filter(searchChanged)

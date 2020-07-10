@@ -9,6 +9,7 @@ using Sextant.XamForms;
 using Showroom.ListView;
 using Showroom.Main;
 using Showroom.Navigation;
+using Showroom.Scroll;
 using Showroom.Search;
 using Showroom.ValueConverters;
 using Splat;
@@ -32,7 +33,9 @@ namespace Showroom.Composition
                 .CurrentMutable
                 .RegisterPlatform(registrar);
 
-            Locator.CurrentMutable.UseSerilogFullLogger(Log.Logger);
+            Locator
+                .CurrentMutable
+                .UseSerilogFullLogger(Log.Logger);
 
             RegisterServices(Locator.CurrentMutable);
             RegisterViews(Locator.CurrentMutable);
@@ -61,6 +64,7 @@ namespace Showroom.Composition
             mutableDependencyResolver.RegisterView<ListOptions, ListOptionsViewModel>();
             mutableDependencyResolver.RegisterView<SearchList, SearchListViewModel>();
             mutableDependencyResolver.RegisterView<NewItem, NewItemViewModel>();
+            mutableDependencyResolver.RegisterView<InfiniteLoad, InfiniteLoadViewModel>();
         }
 
         private static void RegisterViewModels(IMutableDependencyResolver mutableDependencyResolver)
@@ -72,12 +76,14 @@ namespace Showroom.Composition
             mutableDependencyResolver.RegisterViewModel<CollectionViewModel>();
             mutableDependencyResolver.RegisterViewModel<ListOptionsViewModel>();
             mutableDependencyResolver.RegisterViewModel<SearchListViewModel>();
+            mutableDependencyResolver.RegisterViewModel<InfiniteLoadViewModel>();
         }
 
         private static void RegisterServices(IMutableDependencyResolver mutableDependencyResolver)
         {
             mutableDependencyResolver.RegisterLazySingleton<ICoffeeService>(() => new CoffeeService(new CoffeeClientMock()));
             mutableDependencyResolver.RegisterLazySingleton<IDrinkService>(() => new DrinkDataService(new DrinkClientMock()));
+            mutableDependencyResolver.RegisterLazySingleton<IOrderService>(() => new OrderService(new OrderClientMock()));
             mutableDependencyResolver.RegisterLazySingleton<IPopupNavigation>(() => PopupNavigation.Instance);
 
             // https://reactiveui.net/docs/handbook/data-binding/value-converters#registration

@@ -19,9 +19,9 @@ namespace Showroom.Search
         private readonly ObservableAsPropertyHelper<bool> _isRefreshing;
         private string _searchText;
 
-        public SearchListViewModel()
+        public SearchListViewModel(IDrinkService drinkService)
         {
-            _drinkDataService = Locator.Current.GetService<IDrinkService>();
+            _drinkDataService = drinkService;
 
             Func<ItemViewModel, bool> search(string searchTerm) =>
                 viewModel =>

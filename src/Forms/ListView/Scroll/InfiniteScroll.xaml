@@ -2,11 +2,10 @@
 
 <showroom:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:search="clr-namespace:Showroom.Search;assembly=Showroom"
                       xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
                       xmlns:scroll="clr-namespace:Showroom.Scroll;assembly=Showroom"
-                      x:Class="Showroom.Search.SearchList"
-                      x:TypeArguments="search:SearchListViewModel">
+                      x:Class="Showroom.Scroll.InfiniteScroll"
+                      x:TypeArguments="scroll:InfiniteScrollViewModel">
     <ContentPage.Resources>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -20,14 +19,20 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <SearchBar x:Name="Search" Grid.Row="0" Grid.Column="0" />
-            <Button Grid.Row="0" Grid.Column="1" x:Name="Add" Text="{StaticResource PlusIcon}" FontFamily="{StaticResource FontAwesomeSolid}" HorizontalOptions="End" />
-            <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="ListView" IsPullToRefreshEnabled="True">
+            <Button x:Name="Load" Grid.Row="0" Grid.Column="1" Text="Load" />
+            <ListView x:Name="ListView" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsPullToRefreshEnabled="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <search:ItemViewCell />
+                        <scroll:InventoryItemViewCell />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <ActivityIndicator x:Name="Activity"
+                               Grid.Row="0"
+                               Grid.Column="0" 
+                               Grid.RowSpan="2"
+                               Grid.ColumnSpan="2"
+                               Color="Goldenrod"/>
         </Grid>
     </ContentPage.Content>
 </showroom:ContentPageBase>

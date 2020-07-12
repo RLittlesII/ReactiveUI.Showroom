@@ -5,10 +5,11 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using ReactiveUI;
 using Sextant;
+using Splat;
 
 namespace Showroom
 {
-    public abstract class ViewModelBase : ReactiveObject, INavigable, IDisposable
+    public abstract class ViewModelBase : ReactiveObject, INavigable, IDestructible
     {
         protected readonly CompositeDisposable ViewModelSubscriptions = new CompositeDisposable();
 
@@ -19,30 +20,30 @@ namespace Showroom
 
         public virtual string Id { get; }
 
+        public virtual bool IsBusy { get; }
+
+        public virtual bool IsLoading { get; }
+
         public ReactiveCommand<Unit, Unit> InitializeData { get; private set; }
-
-        public virtual IObservable<Unit> WhenNavigatedTo(INavigationParameter parameter) =>
-            Observable.Return(Unit.Default);
-
-        public virtual IObservable<Unit> WhenNavigatedFrom(INavigationParameter parameter) =>
-            Observable.Return(Unit.Default);
-
-        public virtual IObservable<Unit> WhenNavigatingTo(INavigationParameter parameter) =>
-            Observable.Return(Unit.Default);
-
-        IObservable<Unit> INavigated.WhenNavigatedTo(INavigationParameter parameter) =>
-            WhenNavigatedTo(parameter);
-
-        IObservable<Unit> INavigated.WhenNavigatedFrom(INavigationParameter parameter) =>
-            WhenNavigatedFrom(parameter);
-
-        IObservable<Unit> INavigating.WhenNavigatingTo(INavigationParameter parameter) =>
-            WhenNavigatingTo(parameter);
 
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        protected virtual IObservable<Unit> WhenNavigatedTo(INavigationParameter parameter) =>
+            WhenNavigatedTo(parameter);
+
+        protected virtual IObservable<Unit> WhenNavigatedFrom(INavigationParameter parameter) =>
+            WhenNavigatedFrom(parameter);
+
+        protected virtual IObservable<Unit> WhenNavigatingTo(INavigationParameter parameter) =>
+            WhenNavigatingTo(parameter);
+
+        protected virtual void Destroy()
+        {
+            ViewModelSubscriptions?.Dispose();
         }
 
         protected virtual Task ExecuteInitializeData() => Task.CompletedTask;
@@ -53,6 +54,20 @@ namespace Showroom
             {
                 ViewModelSubscriptions?.Dispose();
             }
+        }
+
+        IObservable<Unit> INavigated.WhenNavigatedTo(INavigationParameter parameter) =>
+            WhenNavigatedTo(parameter);
+
+        IObservable<Unit> INavigated.WhenNavigatedFrom(INavigationParameter parameter) =>
+            WhenNavigatedFrom(parameter);
+
+        IObservable<Unit> INavigating.WhenNavigatingTo(INavigationParameter parameter) =>
+            WhenNavigatingTo(parameter);
+
+        void IDestructible.Destroy()
+        {
+            Destroy();
         }
     }
 }

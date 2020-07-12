@@ -15,9 +15,9 @@ namespace Showroom.ListView
         private ObservableAsPropertyHelper<CoffeeDto> _detail;
         private string _imageSource;
 
-        public CoffeeDetailViewModel()
+        public CoffeeDetailViewModel(ICoffeeService coffeeService)
         {
-            _coffeeService = Locator.Current.GetService<ICoffeeService>();
+            _coffeeService = coffeeService;
 
             GetDetail = ReactiveCommand.CreateFromObservable<Guid, Unit>(ExecuteGetDetail);
 
@@ -36,7 +36,7 @@ namespace Showroom.ListView
 
         public ReactiveCommand<Guid, Unit> GetDetail { get; set; }
 
-        public override IObservable<Unit> WhenNavigatingTo(INavigationParameter parameter)
+        protected override IObservable<Unit> WhenNavigatingTo(INavigationParameter parameter)
         {
             if (parameter.TryGetValue("Id", out var id))
             {

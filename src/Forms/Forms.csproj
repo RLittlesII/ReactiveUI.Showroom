@@ -65,6 +65,7 @@
       <DefineConstants>TRACE;RELEASE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
     </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="Bogus" Version="29.0.2" />
         <PackageReference Include="DynamicData" Version="6.*" />
         <PackageReference Include="Pharmacist.MsBuild" Version="1.*" PrivateAssets="all" />
         <PackageReference Include="Pharmacist.Common" Version="1.*" />
@@ -137,6 +138,14 @@
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
+      <EmbeddedResource Update="ListView\Scroll\InfiniteScroll.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="ListView\Scroll\InventoryItemViewCell.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
       <Compile Update="Resources\CoffeeFacts.Designer.cs">
@@ -178,6 +187,14 @@
       </Compile>
       <Compile Update="ListView\OptionViewCell.xaml.cs">
         <DependentUpon>OptionViewCell.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="ListView\Scroll\InfiniteScroll.xaml.cs">
+        <DependentUpon>SearchListView.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="ListView\Scroll\InventoryItemViewCell.xaml.cs">
+        <DependentUpon>ItemViewCell.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>

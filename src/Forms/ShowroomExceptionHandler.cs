@@ -1,13 +1,49 @@
 using System;
+using System.Diagnostics;
+using System.Reactive.Concurrency;
+using ReactiveUI;
+using Splat;
 
 namespace Showroom.Composition
 {
-    public class ShowroomExceptionHandler : IObserver<Exception>
+    public class ShowroomExceptionHandler : IObserver<Exception>, IEnableLogger
     {
-        public void OnCompleted() { }
 
-        public void OnError(Exception error) { }
+        /// <inheritdoc/>
+        public virtual void OnNext(Exception value)
+        {
+            if (Debugger.IsAttached)
+            {
+                Debugger.Break();
+            }
 
-        public void OnNext(Exception value) { }
+            this.Log().Error(value);
+
+            RxApp.MainThreadScheduler.Schedule(() => throw value);
+        }
+
+        /// <inheritdoc/>
+        public virtual void OnError(Exception error)
+        {
+            if (Debugger.IsAttached)
+            {
+                Debugger.Break();
+            }
+
+            this.Log().Error(error);
+
+            RxApp.MainThreadScheduler.Schedule(() => throw error);
+        }
+
+        /// <inheritdoc/>
+        public virtual void OnCompleted()
+        {
+            if (Debugger.IsAttached)
+            {
+                Debugger.Break();
+            }
+
+            RxApp.MainThreadScheduler.Schedule(() => throw new NotImplementedException());
+        }
     }
 }

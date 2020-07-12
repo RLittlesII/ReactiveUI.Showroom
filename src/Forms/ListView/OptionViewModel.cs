@@ -9,6 +9,8 @@ namespace Showroom
     {
         Search,
 
-        DetailNavigation
+        DetailNavigation,
+
+        InfiniteScroll
     }
 }

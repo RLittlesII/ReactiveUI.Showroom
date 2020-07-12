@@ -18,10 +18,10 @@ namespace Showroom.ListView
         private readonly IParameterViewStackService _viewStackService;
         private readonly ReadOnlyObservableCollection<CoffeeCellViewModel> _coffeeList;
 
-        public CoffeeListViewModel()
+        public CoffeeListViewModel(IParameterViewStackService parameterViewStackService, ICoffeeService coffeeService)
         {
-            _viewStackService = Locator.Current.GetService<IParameterViewStackService>();
-            _coffeeService = Locator.Current.GetService<ICoffeeService>();
+            _viewStackService = parameterViewStackService;
+            _coffeeService = coffeeService;
 
             CoffeeDetails = ReactiveCommand.CreateFromObservable<CoffeeCellViewModel, Unit>(ExecuteNavigate).DisposeWith(ViewModelSubscriptions);
 

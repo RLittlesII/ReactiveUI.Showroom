@@ -4,6 +4,7 @@ using System.Reactive;
 using ReactiveUI;
 using Sextant;
 using Showroom.ListView;
+using Showroom.Scroll;
 using Showroom.Search;
 using Splat;
 
@@ -22,7 +23,8 @@ namespace Showroom
             Items = new ObservableCollection<OptionViewModel>
             {
                 new OptionViewModel{ Option = ListOption.DetailNavigation },
-                new OptionViewModel{ Option = ListOption.Search }
+                new OptionViewModel{ Option = ListOption.Search },
+                new OptionViewModel{ Option = ListOption.InfiniteScroll }
             };
         }
 
@@ -39,6 +41,8 @@ namespace Showroom
                     return _viewStackService.PushPage<SearchListViewModel>();
                 case ListOption.DetailNavigation:
                     return _viewStackService.PushPage<CoffeeListViewModel>();
+                case ListOption.InfiniteScroll:
+                    return _viewStackService.PushPage<InfiniteScrollViewModel>();
                 default:
                     throw new ArgumentOutOfRangeException();
             }

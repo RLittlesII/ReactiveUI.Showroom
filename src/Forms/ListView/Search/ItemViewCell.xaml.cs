@@ -5,7 +5,7 @@ using Xamarin.Forms.Xaml;
 namespace Showroom.Search
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ItemViewCell : ReactiveViewCell<ItemViewModel>
+    public partial class ItemViewCell
     {
         public ItemViewCell()
         {

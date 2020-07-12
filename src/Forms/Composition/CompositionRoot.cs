@@ -9,12 +9,14 @@ using Sextant.XamForms;
 using Showroom.ListView;
 using Showroom.Main;
 using Showroom.Navigation;
+using Showroom.Scroll;
 using Showroom.Search;
 using Showroom.ValueConverters;
 using Splat;
 using Splat.Serilog;
 using Xamarin.Forms;
 using CoffeeClientMock = Showroom.ListView.CoffeeClientMock;
+using SearchListViewModel = Showroom.Search.SearchListViewModel;
 
 namespace Showroom.Composition
 {
@@ -36,7 +38,7 @@ namespace Showroom.Composition
 
             RegisterServices(Locator.CurrentMutable);
             RegisterViews(Locator.CurrentMutable);
-            RegisterViewModels(Locator.CurrentMutable);
+            RegisterViewModels(Locator.GetLocator());
         }
 
         public Page StartPage<TViewModel>()
@@ -59,25 +61,29 @@ namespace Showroom.Composition
             mutableDependencyResolver.RegisterView<CoffeeDetail, CoffeeDetailViewModel>();
             mutableDependencyResolver.RegisterView<Collection, CollectionViewModel>();
             mutableDependencyResolver.RegisterView<ListOptions, ListOptionsViewModel>();
-            mutableDependencyResolver.RegisterView<SearchList, SearchListViewModel>();
+            mutableDependencyResolver.RegisterView<InfiniteScroll, InfiniteScrollViewModel>();
+            mutableDependencyResolver.RegisterView<SearchList,SearchListViewModel>();
             mutableDependencyResolver.RegisterView<NewItem, NewItemViewModel>();
         }
 
-        private static void RegisterViewModels(IMutableDependencyResolver mutableDependencyResolver)
+        private static void RegisterViewModels(IDependencyResolver dependencyResolver)
         {
-            mutableDependencyResolver.RegisterViewModel<MainViewModel>();
-            mutableDependencyResolver.RegisterViewModel<NavigationRootViewModel>();
-            mutableDependencyResolver.RegisterViewModel<CoffeeListViewModel>();
-            mutableDependencyResolver.RegisterViewModel<CoffeeDetailViewModel>();
-            mutableDependencyResolver.RegisterViewModel<CollectionViewModel>();
-            mutableDependencyResolver.RegisterViewModel<ListOptionsViewModel>();
-            mutableDependencyResolver.RegisterViewModel<SearchListViewModel>();
+            dependencyResolver.RegisterViewModel<MainViewModel>();
+            dependencyResolver.RegisterViewModel<NavigationRootViewModel>();
+            dependencyResolver.RegisterViewModel<ListOptionsViewModel>();
+            dependencyResolver.RegisterViewModel(() => new CoffeeListViewModel(dependencyResolver.GetService<IParameterViewStackService>(), dependencyResolver.GetService<ICoffeeService>()));
+            dependencyResolver.RegisterViewModel(() => new CoffeeDetailViewModel(dependencyResolver.GetService<ICoffeeService>()));
+            dependencyResolver.RegisterViewModel<CollectionViewModel>();
+            dependencyResolver.RegisterViewModel(() => new SearchListViewModel(dependencyResolver.GetService<IDrinkService>()));
+            dependencyResolver.RegisterViewModel<NewItemViewModel>();
+            dependencyResolver.RegisterViewModel(() => new InfiniteScrollViewModel(dependencyResolver.GetService<IInventoryDataService>()));
         }
 
         private static void RegisterServices(IMutableDependencyResolver mutableDependencyResolver)
         {
             mutableDependencyResolver.RegisterLazySingleton<ICoffeeService>(() => new CoffeeService(new CoffeeClientMock()));
             mutableDependencyResolver.RegisterLazySingleton<IDrinkService>(() => new DrinkDataService(new DrinkClientMock()));
+            mutableDependencyResolver.RegisterLazySingleton<IInventoryDataService>(() => new InventoryDataService(new CoffeeInventoryMock()));
             mutableDependencyResolver.RegisterLazySingleton<IPopupNavigation>(() => PopupNavigation.Instance);
 
             // https://reactiveui.net/docs/handbook/data-binding/value-converters#registration

@@ -21,12 +21,21 @@ namespace Showroom.Base
         public IObservable<IChangeSet<T, Guid>> ChangeSet => SourceCache.Connect().RefCount();
 
         /// <inheritdoc />
-        public IObservable<Unit> Create(T dto) =>
-            _client
+        public IObservable<Unit> Create(T dto)
+        {
+            // Call API Create End Point
+            
+            // Get return value
+            
+            // Add to database
+            
+            // Add to dynamic data list
+            return _client
                 .Post(dto)
                 .ToObservable()
                 .Do(_ => SourceCache.AddOrUpdate(_))
                 .Select(x => Unit.Default);
+        }
 
         /// <inheritdoc />
         public IObservable<T> Read() =>

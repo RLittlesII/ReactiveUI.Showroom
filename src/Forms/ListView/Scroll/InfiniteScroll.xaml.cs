@@ -19,34 +19,34 @@ namespace Showroom.Scroll
             InitializeComponent();
 
             this.OneWayBind(ViewModel, x => x.IsRefreshing, x => x.ListView.IsRefreshing)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             this.OneWayBind(ViewModel, x => x.IsLoading, x => x.Activity.IsRunning)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             this.OneWayBind(ViewModel, x => x.IsLoading, x => x.Activity.IsVisible)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             this.Bind(ViewModel, x => x.SearchText, x => x.Search.Text)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             this.WhenAnyValue(x => x.ViewModel.Items)
                 .Where(x => x != null)
                 .BindTo(this, x => x.ListView.ItemsSource)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             ListView
                 .Events()
                 .Refreshing
                 .Select(x => ((IList<InventoryItemViewModel>) ListView.ItemsSource).Count)
                 .InvokeCommand(this, x => x.ViewModel.Load)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             ListView
                 .Events()
                 .ItemSelected
                 .Subscribe(item => { ListView.SelectedItem = null; })
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             var itemAppearing =
                 ListView
@@ -59,7 +59,7 @@ namespace Showroom.Scroll
                 .Select(x => x.ItemIndex)
                 .ObserveOn(RxApp.MainThreadScheduler)
                 .InvokeCommand(this, x => x.ViewModel.Load)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             Load
                 .Events()
@@ -67,7 +67,7 @@ namespace Showroom.Scroll
                 .Select(x => ((IList) ListView.ItemsSource).Count)
                 .ObserveOn(RxApp.MainThreadScheduler)
                 .InvokeCommand(this, x => x.ViewModel.Load)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             #region Original
 

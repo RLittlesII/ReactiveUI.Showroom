@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
+                      xmlns:search="clr-namespace:Showroom.Search;assembly=Showroom"
+                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
+                      xmlns:collectionView="clr-namespace:Showroom.CollectionView;assembly=Showroom"
+                      x:Class="Showroom.CollectionView.CollectionOptions"
+                      x:TypeArguments="collectionView:CollectionOptionsViewModel">
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView x:Name="Options">
+                <CollectionView.SelectionMode>
+                    Single
+                </CollectionView.SelectionMode>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <collectionView:CollectionOptionViewCell />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</base:ContentPageBase>

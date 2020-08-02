@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using ReactiveUI;
 using Showroom.Extensions;
 
@@ -13,12 +15,17 @@ namespace Showroom.ValueConverters
                 return 100;
             }
 
+            if (fromType == typeof(IEnumerable<string>))
+            {
+                return 100;
+            }
+
             return 0;
         }
 
         public bool TryConvert(object @from, Type toType, object conversionHint, out object result)
         {
-            result = @from.ToString().SplitCamelCase();
+            result = string.Join(", ", (IEnumerable<string>)@from).SplitCamelCase().Trim();
             return true;
         }
     }

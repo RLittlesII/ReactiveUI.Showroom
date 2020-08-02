@@ -22,22 +22,22 @@ namespace Showroom.Coffee
             GetDetail = ReactiveCommand.CreateFromObservable<Guid, Unit>(ExecuteGetDetail);
 
             this.WhenAnyValue(x => x.CoffeeId)
-                .WhereNotNull()
+                .Where(x => x != null)
                 .InvokeCommand(this, x => x.GetDetail);
         }
 
         private IObservable<Unit> ExecuteGetDetail(Guid id) =>
             Observable
                 .Create<Unit>(observer =>
-                    _coffeeService
-                        .Read(id)
-                        .Where(x => x != null)
-                        .ToProperty(
-                            this,
-                            nameof(Detail),
-                            out _detail,
-                            deferSubscription: true,
-                            scheduler: RxApp.MainThreadScheduler));
+                {
+                    _detail =
+                        _coffeeService
+                            .Read(id)
+                            .Where(x => x!= null)
+                            .ToProperty(this, x => x.Detail);
+
+                    return Disposable.Empty;
+                });
 
         public ReactiveCommand<Guid, Unit> GetDetail { get; set; }
 

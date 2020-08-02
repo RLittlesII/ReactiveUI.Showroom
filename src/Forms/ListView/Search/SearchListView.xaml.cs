@@ -20,16 +20,16 @@ namespace Showroom.Search
             InitializeComponent();
 
             this.OneWayBind(ViewModel, x => x.IsRefreshing, x => x.ListView.IsRefreshing)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             this.Bind(ViewModel, x => x.SearchText, x => x.Search.Text)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             ListView
                 .Events()
                 .Refreshing
                 .InvokeCommand(this, x => x.ViewModel.Refresh)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             ListView
                 .Events()
@@ -38,17 +38,17 @@ namespace Showroom.Search
                 {
                     ListView.SelectedItem = null;
                 })
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             Add.Events()
                 .Pressed
                 .InvokeCommand(this, x => x.ViewModel.Add)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             this.WhenAnyValue(x => x.ViewModel.Items)
                 .Where(x => x != null)
                 .BindTo(this, x => x.ListView.ItemsSource)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             Interactions
                 .AddItem
@@ -79,7 +79,7 @@ namespace Showroom.Search
                         });
 
                 })
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
         }
     }
 }

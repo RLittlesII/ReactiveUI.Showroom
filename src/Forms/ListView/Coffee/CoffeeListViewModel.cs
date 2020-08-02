@@ -4,6 +4,7 @@ using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI;
@@ -25,6 +26,8 @@ namespace Showroom.Coffee
 
             CoffeeDetails = ReactiveCommand.CreateFromObservable<CoffeeCellViewModel, Unit>(ExecuteNavigate).DisposeWith(ViewModelSubscriptions);
 
+            Refresh = ReactiveCommand.CreateFromTask(ExecuteRefresh).DisposeWith(ViewModelSubscriptions);
+
             _coffeeService
                 .ChangeSet
                 .Transform(x => new CoffeeCellViewModel(x.Id, x.Name, x.Species, x.Regions, x.Image))
@@ -38,7 +41,11 @@ namespace Showroom.Coffee
 
         }
 
+        private async Task ExecuteRefresh() => await _coffeeService.Read();
+
         public ReactiveCommand<CoffeeCellViewModel, Unit> CoffeeDetails { get; set; }
+
+        public ReactiveCommandBase<Unit, Unit> Refresh { get; set; }
 
         public ReadOnlyObservableCollection<CoffeeCellViewModel> Coffee => _coffeeList;
 

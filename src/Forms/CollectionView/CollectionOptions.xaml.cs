@@ -1,32 +1,25 @@
 using System;
+using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using ReactiveUI;
-using Showroom.Base;
 using Xamarin.Forms;
 
-namespace Showroom
+namespace Showroom.CollectionView
 {
-    public partial class ListOptions : ContentPageBase<ListOptionsViewModel>
+    public partial class CollectionOptions
     {
-        public ListOptions()
+        public CollectionOptions()
         {
             InitializeComponent();
 
             Options
                 .Events()
-                .ItemTapped
-                .Select(x => x.Item as OptionViewModel)
+                .SelectionChanged
+                .Where(x => Options.SelectionMode == SelectionMode.Single)
+                .Select(x => x.CurrentSelection.First())
+                .Cast<CollectionOptionViewModel>()
                 .InvokeCommand(this, x => x.ViewModel.Navigate)
-                .DisposeWith(PageBindings);
-
-            Options
-                .Events()
-                .ItemSelected
-                .Subscribe(item =>
-                {
-                    Options.SelectedItem = null;
-                })
                 .DisposeWith(PageBindings);
 
             this.WhenAnyValue(x => x.ViewModel.Items)

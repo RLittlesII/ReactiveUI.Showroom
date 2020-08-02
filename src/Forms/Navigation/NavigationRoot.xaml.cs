@@ -20,6 +20,22 @@ namespace Showroom.Navigation
 
             Detail = Locator.Current.GetNavigationView("NavigationView");
 
+            Menu.Events()
+                .ItemTapped
+                .Select(x => x.Item as NavigationItemViewModel)
+                .InvokeCommand(this, x => x.ViewModel.Navigate)
+                .DisposeWith(_masterDetailBindings);
+
+            Menu.Events()
+                .ItemSelected
+                .Where(x => x != null)
+                .Subscribe(_ =>
+                {
+                    Menu.SelectedItem = null;
+                    IsPresented = false;
+                })
+                .DisposeWith(_masterDetailBindings);
+
             Events
                 .DeviceDisplayMainDisplayInfoChanged
                 .Where(x => x.DisplayInfo.Orientation == DisplayOrientation.Landscape && Device.Idiom == TargetIdiom.Tablet)
@@ -29,24 +45,6 @@ namespace Showroom.Navigation
             this.WhenAnyValue(x => x.ViewModel.NavigationItems)
                 .Where(x => x != null)
                 .BindTo(this, x => x.Menu.ItemsSource)
-                .DisposeWith(_masterDetailBindings);
-
-            Menu
-                .Events()
-                .ItemTapped
-                .Select(x => x.Item as NavigationItemViewModel)
-                .InvokeCommand(this, x => x.ViewModel.Navigate)
-                .DisposeWith(_masterDetailBindings);
-
-            Menu
-                .Events()
-                .ItemSelected
-                .Where(x => x != null)
-                .Subscribe(_ =>
-                {
-                    Menu.SelectedItem = null;
-                    IsPresented = false;
-                })
                 .DisposeWith(_masterDetailBindings);
 
             // HACK: [rlittlesii: July 04, 2020] This is a hack around a Xamarin.Forms iOS issue.

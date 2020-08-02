@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<base:ContentViewBase xmlns="http://xamarin.com/schemas/2014/forms"
-                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                           xmlns:reactiveui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
-                           xmlns:search="clr-namespace:Showroom.Search;assembly=Showroom"
-                           xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
-                           x:Class="Showroom.Search.ItemViewCell"
-                           x:TypeArguments="search:ItemViewModel"
-                           x:DataType="search:ItemViewModel">
-
+<base:ContentViewBase x:TypeArguments="collectionView:ItemViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
+                      xmlns:collectionView="clr-namespace:Showroom.CollectionView;assembly=Showroom"
+                      x:Class="Showroom.CollectionView.ItemView">
     <Grid Margin="16,0,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*" />

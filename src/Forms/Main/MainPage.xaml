@@ -4,9 +4,8 @@
                       xmlns:local="clr-namespace:Showroom"
                       xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                       xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
-                      xmlns:main="clr-namespace:Showroom.Main;assembly=Showroom"
-                      x:Class="Showroom.Main.MainPage"
-                      x:TypeArguments="main:MainViewModel">
+                      x:Class="Showroom.MainPage"
+                      x:TypeArguments="local:MainViewModel">
 
     <StackLayout>
         <!-- Place new controls here -->

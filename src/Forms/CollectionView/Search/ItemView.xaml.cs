@@ -1,12 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using ReactiveUI;
-using ReactiveUI.XamForms;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Showroom.Search
+namespace Showroom.CollectionView
 {
-    public partial class ItemViewCell
+    public partial class ItemView
     {
-        public ItemViewCell()
+        public ItemView()
         {
             InitializeComponent();
 

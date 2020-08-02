@@ -1,6 +1,6 @@
 ﻿using Showroom.Base;
 
-namespace Showroom.Main
+namespace Showroom
 {
     public partial class MainPage : ContentPageBase<MainViewModel>
     {

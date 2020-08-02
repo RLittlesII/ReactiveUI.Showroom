@@ -1,6 +1,6 @@
 using Showroom.Base;
 
-namespace Showroom.Main
+namespace Showroom
 {
     public class MainViewModel : ViewModelBase
     {

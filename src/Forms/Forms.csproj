@@ -10,7 +10,6 @@
         <DebugType>pdbonly</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
-
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugMock|AnyCPU' ">
       <DebugType>pdbonly</DebugType>
       <Optimize>false</Optimize>
@@ -67,8 +66,8 @@
     <ItemGroup>
         <PackageReference Include="Bogus" Version="29.0.2" />
         <PackageReference Include="DynamicData" Version="6.*" />
-        <PackageReference Include="Pharmacist.MsBuild" Version="1.*" PrivateAssets="all" />
         <PackageReference Include="Pharmacist.Common" Version="1.*" />
+        <PackageReference Include="Pharmacist.MsBuild" Version="1.*" PrivateAssets="all" />
         <PackageReference Include="ReactiveUI.XamForms" Version="11.*" />
         <PackageReference Include="Refit" Version="5.1.67" />
         <PackageReference Include="RxUI.Plugins.Popup" Version="0.4.0" />
@@ -102,7 +101,11 @@
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
-      <EmbeddedResource Update="CollectionView\Collection.xaml">
+      <EmbeddedResource Update="CollectionView\DrinkCollection.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="CollectionView\DrinkView.xaml">
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
@@ -146,6 +149,22 @@
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
+      <EmbeddedResource Update="CollectionView\CollectionOptions.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="CollectionView\CollectionOptionViewCell.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="CollectionView\Search\SearchCollectionView.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="CollectionView\Search\ItemView.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
       <Compile Update="Resources\CoffeeFacts.Designer.cs">
@@ -164,8 +183,11 @@
       <Compile Update="Navigation\NavigationItemCell.xaml.cs">
         <DependentUpon>NavigationItemCell.xaml</DependentUpon>
       </Compile>
-      <Compile Update="CollectionView\Collection.xaml.cs">
+      <Compile Update="CollectionView\DrinkCollection.xaml.cs">
         <DependentUpon>Collection.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="CollectionView\DrinkView.xaml.cs">
+        <DependentUpon>DrinkView.xaml</DependentUpon>
       </Compile>
       <Compile Update="ListView\Search\SearchListView.xaml.cs">
         <DependentUpon>SearchListView.xaml</DependentUpon>
@@ -196,6 +218,20 @@
       <Compile Update="ListView\Scroll\InventoryItemViewCell.xaml.cs">
         <DependentUpon>ItemViewCell.xaml</DependentUpon>
         <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="CollectionView\CollectionOptions.xaml.cs">
+        <DependentUpon>ListOptions.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="CollectionView\CollectionOptionViewCell.xaml.cs">
+        <DependentUpon>OptionViewCell.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="CollectionView\Search\SearchCollectionView.xaml.cs">
+        <DependentUpon>SearchCollectionView.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="CollectionView\Search\ItemView.xaml.cs">
+        <DependentUpon>ItemView.xaml</DependentUpon>
       </Compile>
     </ItemGroup>
     <ItemGroup>

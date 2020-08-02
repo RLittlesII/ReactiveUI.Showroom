@@ -4,6 +4,7 @@ using System.Reactive;
 using ReactiveUI;
 using Sextant;
 using Showroom.Base;
+using Showroom.CollectionView;
 using Splat;
 using static Showroom.FontAwesomeIcons;
 
@@ -21,7 +22,7 @@ namespace Showroom.Navigation
             NavigationItems = new ObservableCollection<NavigationItemViewModel>
             {
                 new NavigationItemViewModel { Title = "List View", Icon = ListAlt, IViewFor = typeof(ListOptionsViewModel) },
-                new NavigationItemViewModel { Title = "Collection View", Icon = LayerGroup, IViewFor = typeof(CollectionViewModel) }
+                new NavigationItemViewModel { Title = "Collection View", Icon = LayerGroup, IViewFor = typeof(CollectionOptionsViewModel) }
             };
 
             Navigate = ReactiveCommand.CreateFromObservable<NavigationItemViewModel, Unit>(ExecuteNavigate);

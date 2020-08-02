@@ -15,29 +15,39 @@ namespace Showroom.Coffee
             InitializeComponent();
 
             this.WhenAnyValue(x => x.ViewModel.InitializeData)
-                .WhereNotNull()
+                .Where(x => x != null)
                 .Select(x => Unit.Default)
                 .InvokeCommand(this, x => x.ViewModel.InitializeData)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             this.WhenAnyValue(x => x.ViewModel.Coffee)
-                .WhereNotNull()
+                .Where(x => x != null)
                 .BindTo(this, x => x.CoffeeListView.ItemsSource)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             CoffeeListView
                 .Events()
                 .ItemTapped
                 .Select(itemTapped => itemTapped.Item as CoffeeCellViewModel)
                 .InvokeCommand(this, x => x.ViewModel.CoffeeDetails)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
 
             CoffeeListView
                 .Events()
                 .ItemSelected
                 .Select(itemTapped => itemTapped.SelectedItem)
                 .Subscribe(selectedItem => selectedItem = null)
-                .DisposeWith(ControlBindings);
+                .DisposeWith(PageBindings);
+
+            CoffeeListView
+                .Events()
+                .ItemAppearing
+                .Subscribe();
+
+            CoffeeListView
+                .Events()
+                .Refreshing
+                .InvokeCommand(this, x => x.ViewModel.Refresh);
         }
     }
 }

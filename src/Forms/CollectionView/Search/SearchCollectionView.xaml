@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:ContentPageBase x:TypeArguments="collectionView:SearchCollectionViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
+                      xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
+                      xmlns:search="clr-namespace:Showroom.Search;assembly=Showroom"
+                      xmlns:collectionView="clr-namespace:Showroom.CollectionView;assembly=Showroom"
+                      x:Class="Showroom.CollectionView.SearchCollectionView">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <SearchBar x:Name="Search" Grid.Row="0" Grid.Column="0" />
+            <Button Grid.Row="0" Grid.Column="1" x:Name="Add" Text="{StaticResource PlusIcon}" FontFamily="{StaticResource FontAwesomeSolid}" HorizontalOptions="End" />
+            <CollectionView Grid.Row="1" Grid.ColumnSpan="2" x:Name="SearchCollection">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <collectionView:ItemView />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</base:ContentPageBase>

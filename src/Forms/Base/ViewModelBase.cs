@@ -44,8 +44,6 @@ namespace Showroom.Base
             ViewModelSubscriptions?.Dispose();
         }
 
-        protected virtual Task ExecuteInitializeData() => Task.CompletedTask;
-
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
@@ -53,6 +51,7 @@ namespace Showroom.Base
                 ViewModelSubscriptions?.Dispose();
             }
         }
+        protected virtual Task ExecuteInitializeData() => Task.CompletedTask;
 
         IObservable<Unit> INavigated.WhenNavigatedTo(INavigationParameter parameter) =>
             WhenNavigatedTo(parameter);

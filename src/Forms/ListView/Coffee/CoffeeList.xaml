@@ -11,6 +11,7 @@
                       IconImageSource="hamburger.png">
     <ContentPage.Content>
         <StackLayout>
+            <SearchBar x:Name="SearchBar"></SearchBar>
             <ListView AutomationId="CoffeeListView" x:Name="CoffeeListView" HasUnevenRows="True" RowHeight="180" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -18,6 +19,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button x:Name="Button" />
         </StackLayout>
     </ContentPage.Content>
 </base:ContentPageBase>

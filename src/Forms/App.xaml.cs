@@ -1,6 +1,5 @@
 ﻿using System;
 using Showroom.Composition;
-using Showroom.Main;
 using Showroom.Navigation;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

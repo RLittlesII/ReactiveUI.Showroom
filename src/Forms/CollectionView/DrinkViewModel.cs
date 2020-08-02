@@ -1,28 +1,39 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
 using ReactiveUI;
 using Showroom.Base;
 using Showroom.Extensions;
 
-namespace Showroom.Coffee
+namespace Showroom.CollectionView
 {
-    public class CoffeeCellViewModel : ItemViewModelBase
+    public class DrinkViewModel : ItemViewModelBase
     {
         private string _name;
         private string _species;
         private Guid _id;
         private IEnumerable<string> _regions;
         private string _image;
+        private bool _selected;
 
-        public CoffeeCellViewModel(Guid id, string name, string species, IEnumerable<string> regions, string image = null)
+        public DrinkViewModel(Guid id, string name, string species, IEnumerable<string> regions, string image = null)
         {
             Id = id;
             Name = name;
             Species = species;
-            Regions = regions;
+            Regions = regions.Select(StringExtensions.SplitCamelCase);
             Image = image;
+            Toggle = ReactiveCommand.Create(() => { Selected = true; });
         }
+
+        public bool Selected
+        {
+            get => _selected;
+            set => this.RaiseAndSetIfChanged(ref _selected, value);
+        }
+
+        public ReactiveCommand<Unit, Unit> Toggle { get; set; }
 
         public Guid Id
         {

@@ -7,7 +7,7 @@ namespace Showroom.Base
     public abstract class ContentPageBase<T> : ReactiveContentPage<T>, IDisposable
         where T : ViewModelBase
     {
-        protected CompositeDisposable ControlBindings { get; } = new CompositeDisposable();
+        protected CompositeDisposable PageBindings { get; } = new CompositeDisposable();
         
         public void Dispose()
         {
@@ -19,7 +19,7 @@ namespace Showroom.Base
         {
             if (disposing)
             {
-                ControlBindings?.Dispose();
+                PageBindings?.Dispose();
             }
         }
     }

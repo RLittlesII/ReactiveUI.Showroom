@@ -8,7 +8,6 @@
                    x:Class="Showroom.Navigation.NavigationItemCell"
                    x:DataType="navigation:NavigationItemViewModel"
                    x:TypeArguments="navigation:NavigationItemViewModel">
-
        <StackLayout Orientation="Horizontal" Margin="10">
            <Label Text="{Binding Icon}"
                   Margin="8,0,0,0"

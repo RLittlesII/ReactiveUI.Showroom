@@ -165,6 +165,14 @@
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
+      <EmbeddedResource Update="CollectionView\Scroll\InfiniteCollection.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="CollectionView\Scroll\InfiniteItemView.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
       <Compile Update="Resources\CoffeeFacts.Designer.cs">
@@ -232,6 +240,12 @@
       </Compile>
       <Compile Update="CollectionView\Search\ItemView.xaml.cs">
         <DependentUpon>ItemView.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="CollectionView\Scroll\InfiniteCollection.xaml.cs">
+        <DependentUpon>InfiniteScrollCollection.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="CollectionView\Scroll\InfiniteItemView.xaml.cs">
+        <DependentUpon>InfiniteItemView.xaml</DependentUpon>
       </Compile>
     </ItemGroup>
     <ItemGroup>

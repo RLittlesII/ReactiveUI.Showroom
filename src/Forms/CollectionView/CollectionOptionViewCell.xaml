@@ -6,7 +6,8 @@
                    xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
                    xmlns:collectionView="clr-namespace:Showroom.CollectionView;assembly=Showroom"
                    x:Class="Showroom.CollectionView.CollectionOptionViewCell"
-                   x:TypeArguments="collectionView:CollectionOptionViewModel">
+                   x:TypeArguments="collectionView:CollectionOptionViewModel"
+                   Margin="8">
         <StackLayout>
             <Label x:Name="Option" Text="Hello, world!" />
         </StackLayout>

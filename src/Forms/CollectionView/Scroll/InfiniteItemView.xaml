@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:ContentViewBase x:TypeArguments="scroll:InfiniteItemViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
+                      xmlns:scroll="clr-namespace:Showroom.CollectionView.Scroll;assembly=Showroom"
+                      x:Class="Showroom.CollectionView.Scroll.InfiniteItemView">
+    <ContentView.Content>
+        <Grid Margin="16,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
+                   x:Name="Title" />
+            <Label Grid.Column="1"
+                   x:Name="Description"
+                   HorizontalOptions="End" />
+        </Grid>
+    </ContentView.Content>
+</base:ContentViewBase>

@@ -1,0 +1,38 @@
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
+                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
+                      xmlns:scroll="clr-namespace:Showroom.CollectionView.Scroll;assembly=Showroom"
+                      x:Class="Showroom.CollectionView.Scroll.InfiniteCollection"
+                      x:TypeArguments="scroll:InfiniteCollectionViewModel">
+    <ContentPage.Resources>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <SearchBar x:Name="Search" Grid.Row="0" Grid.Column="0" />
+            <Button x:Name="Load" Grid.Row="0" Grid.Column="1" Text="Load" />
+            <CollectionView
+                x:Name="Collection"
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                RemainingItemsThreshold="1"
+                SelectionMode="Single">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <scroll:InfiniteItemView />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</base:ContentPageBase>

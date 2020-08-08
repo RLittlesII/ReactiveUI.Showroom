@@ -13,9 +13,11 @@ namespace Showroom.CollectionView
         {
             InitializeComponent();
 
-            Options
+            var optionSelectionChanged = Options
                 .Events()
-                .SelectionChanged
+                .SelectionChanged;
+
+            optionSelectionChanged
                 .Where(x => Options.SelectionMode == SelectionMode.Single)
                 .Select(x => x.CurrentSelection.First())
                 .Cast<CollectionOptionViewModel>()

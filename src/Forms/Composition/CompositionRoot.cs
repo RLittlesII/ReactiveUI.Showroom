@@ -9,6 +9,7 @@ using Sextant.XamForms;
 using Showroom.Base;
 using Showroom.Coffee;
 using Showroom.CollectionView;
+using Showroom.CollectionView.Scroll;
 using Showroom.Navigation;
 using Showroom.Scroll;
 using Showroom.Search;
@@ -66,6 +67,7 @@ namespace Showroom.Composition
             mutableDependencyResolver.RegisterView<SearchList,SearchListViewModel>();
             mutableDependencyResolver.RegisterView<NewItem, NewItemViewModel>();
             mutableDependencyResolver.RegisterView<SearchCollectionView, SearchCollectionViewModel>();
+            mutableDependencyResolver.RegisterView<InfiniteCollection, InfiniteCollectionViewModel>();
         }
 
         private static void RegisterViewModels(IDependencyResolver dependencyResolver)
@@ -81,6 +83,7 @@ namespace Showroom.Composition
             dependencyResolver.RegisterViewModel(() => new SearchCollectionViewModel(dependencyResolver.GetService<IDrinkService>()));
             // dependencyResolver.RegisterViewModel<NewItemViewModel>();
             dependencyResolver.RegisterViewModel(() => new InfiniteScrollViewModel(dependencyResolver.GetService<IInventoryDataService>()));
+            dependencyResolver.RegisterViewModel(() => new InfiniteCollectionViewModel(dependencyResolver.GetService<IInventoryDataService>()));
         }
 
         private static void RegisterServices(IMutableDependencyResolver mutableDependencyResolver)

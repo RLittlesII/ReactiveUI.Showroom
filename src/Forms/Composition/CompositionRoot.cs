@@ -81,7 +81,7 @@ namespace Showroom.Composition
             dependencyResolver.RegisterViewModel<DrinkCollectionViewModel>();
             dependencyResolver.RegisterViewModel(() => new SearchListViewModel(dependencyResolver.GetService<IDrinkService>()));
             dependencyResolver.RegisterViewModel(() => new SearchCollectionViewModel(dependencyResolver.GetService<IDrinkService>()));
-            // dependencyResolver.RegisterViewModel<NewItemViewModel>();
+            dependencyResolver.RegisterViewModel<NewItemViewModel>();
             dependencyResolver.RegisterViewModel(() => new InfiniteScrollViewModel(dependencyResolver.GetService<IInventoryDataService>()));
             dependencyResolver.RegisterViewModel(() => new InfiniteCollectionViewModel(dependencyResolver.GetService<IInventoryDataService>()));
         }

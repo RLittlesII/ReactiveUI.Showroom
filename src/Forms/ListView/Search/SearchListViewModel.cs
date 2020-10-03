@@ -18,6 +18,7 @@ namespace Showroom.Search
         private readonly ReadOnlyObservableCollection<ItemViewModel> _items;
         private readonly ObservableAsPropertyHelper<bool> _isRefreshing;
         private string _searchText;
+        private ReadOnlyObservableCollection<ItemViewModel> _newlist;
 
         public SearchListViewModel(IDrinkService drinkService)
         {
@@ -32,7 +33,8 @@ namespace Showroom.Search
                     }
 
                     var lower = searchTerm.ToLower();
-                    return viewModel.Title.ToLower().Contains(lower) || (viewModel.Description?.ToLower().Contains(lower) ?? false);
+                    return viewModel.Title.ToLower().Contains(lower) ||
+                           (viewModel.Description?.ToLower().Contains(lower) ?? false);
                 };
 
             var searchChanged =
@@ -41,28 +43,39 @@ namespace Showroom.Search
                     .DistinctUntilChanged()
                     .Select(search);
 
-            var items = _drinkDataService
-                .ChangeSet
-                .Transform(x => new ItemViewModel { Id = x.Id, Title = x.Title, Type = x.Type, Description = x.Description});
+            var items =
+                _drinkDataService
+                    .ChangeSet
+                    .Transform(x => new ItemViewModel
+                    {
+                        Id = x.Id,
+                        Title = x.Title,
+                        Type = x.Type,
+                        Description = x.Description
+                    });
 
             items
                 .MergeMany((item, id) => item.Remove)
                 .InvokeCommand(this, x => x.Remove)
                 .DisposeWith(ViewModelSubscriptions);
 
-            items
+            var filter = items
                 .AutoRefresh(x => x.Id)
                 .DeferUntilLoaded()
-                .Filter(searchChanged)
-                .Sort(SortExpressionComparer<ItemViewModel>.Descending(x => x.Type).ThenByAscending(x => x.Id))
+                .Filter(searchChanged);
+
+            filter
+                .Sort(SortExpressionComparer<ItemViewModel>
+                    .Descending(x => x.Type)
+                    .ThenByAscending(x => x.Id))
                 .Bind(out _items)
                 .DisposeMany()
                 .Subscribe()
                 .DisposeWith(ViewModelSubscriptions);
 
-            Add = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteAdd).DisposeWith(ViewModelSubscriptions);
-            Refresh = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteRefresh).DisposeWith(ViewModelSubscriptions);
-            Remove = ReactiveCommand.CreateFromObservable(ExecuteRemove, Observable.Return(true)).DisposeWith(ViewModelSubscriptions);
+            Add = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteAdd);
+            Refresh = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteRefresh);
+            Remove = ReactiveCommand.CreateFromObservable(ExecuteRemove, Observable.Return(true));
 
             this.WhenAnyObservable(x => x.Refresh.IsExecuting)
                 .StartWith(false)
@@ -70,7 +83,9 @@ namespace Showroom.Search
                 .ToProperty(this, nameof(IsRefreshing), out _isRefreshing)
                 .DisposeWith(ViewModelSubscriptions);
         }
-        
+
+        public ReactiveCommandBase<PropertyValue<ItemViewModel, string>, object> Save { get; set; }
+
         public string Id { get; }
 
         public bool IsRefreshing => _isRefreshing.Value;

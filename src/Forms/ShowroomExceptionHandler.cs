@@ -18,8 +18,6 @@ namespace Showroom
             }
 
             this.Log().Error(value);
-
-            // RxApp.MainThreadScheduler.Schedule(() => throw value);
         }
 
         /// <inheritdoc/>
@@ -32,7 +30,7 @@ namespace Showroom
 
             this.Log().Error(error);
 
-            // RxApp.MainThreadScheduler.Schedule(() => throw error);
+            RxApp.MainThreadScheduler.Schedule(() => throw error);
         }
 
         /// <inheritdoc/>
@@ -43,7 +41,7 @@ namespace Showroom
                 Debugger.Break();
             }
 
-            RxApp.MainThreadScheduler.Schedule(() => throw new NotImplementedException());
+            RxApp.MainThreadScheduler.Schedule(() => this.Log().Info($"The {nameof(ShowroomExceptionHandler)} has completed!"));
         }
     }
 }

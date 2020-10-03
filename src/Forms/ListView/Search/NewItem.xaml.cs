@@ -12,8 +12,8 @@ namespace Showroom.Search
         {
             InitializeComponent();
 
-            // TODO: [rlittlesii: July 04, 2020] fix once Sextant.Plugins.Popup is completed.
-            ViewModel = new NewItemViewModel();
+            // // TODO: [rlittlesii: July 04, 2020] fix once Sextant.Plugins.Popup is completed.
+            // ViewModel = new NewItemViewModel();
 
             Save
                 .Events()

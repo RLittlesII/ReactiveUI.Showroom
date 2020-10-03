@@ -38,6 +38,8 @@ namespace Showroom.CollectionView
             // HACK: [rlittlesii: July 04, 2020] Make this not suck, this is a great case for routes.
             switch (arg.Option)
             {
+                case CollectionOption.DetailNavigation:
+                    return _viewStackService.PushPage<SearchCollectionViewModel>();
                 case CollectionOption.Search:
                     return _viewStackService.PushPage<SearchCollectionViewModel>();
                 case CollectionOption.InfiniteScroll:

@@ -9,6 +9,7 @@ using Sextant.XamForms;
 using Showroom.Base;
 using Showroom.Coffee;
 using Showroom.CollectionView;
+using Showroom.CollectionView.Refresh;
 using Showroom.CollectionView.Scroll;
 using Showroom.Navigation;
 using Showroom.Scroll;
@@ -60,14 +61,15 @@ namespace Showroom.Composition
             mutableDependencyResolver.RegisterView<NavigationRoot, NavigationRootViewModel>();
             mutableDependencyResolver.RegisterView<CoffeeList, CoffeeListViewModel>();
             mutableDependencyResolver.RegisterView<CoffeeDetail, CoffeeDetailViewModel>();
-            mutableDependencyResolver.RegisterView<CollectionView.DrinkCollection, DrinkCollectionViewModel>();
+            mutableDependencyResolver.RegisterView<DrinkCollection, DrinkCollectionViewModel>();
             mutableDependencyResolver.RegisterView<ListOptions, ListOptionsViewModel>();
-            mutableDependencyResolver.RegisterView<CollectionView.CollectionOptions, CollectionOptionsViewModel>();
+            mutableDependencyResolver.RegisterView<CollectionOptions, CollectionOptionsViewModel>();
             mutableDependencyResolver.RegisterView<InfiniteScroll, InfiniteScrollViewModel>();
             mutableDependencyResolver.RegisterView<SearchList,SearchListViewModel>();
             mutableDependencyResolver.RegisterView<NewItem, NewItemViewModel>();
             mutableDependencyResolver.RegisterView<SearchCollectionView, SearchCollectionViewModel>();
             mutableDependencyResolver.RegisterView<InfiniteCollection, InfiniteCollectionViewModel>();
+            mutableDependencyResolver.RegisterView<RefreshCollection, RefreshCollectionViewModel>();
         }
 
         private static void RegisterViewModels(IDependencyResolver dependencyResolver)
@@ -84,12 +86,13 @@ namespace Showroom.Composition
             dependencyResolver.RegisterViewModel<NewItemViewModel>();
             dependencyResolver.RegisterViewModel(() => new InfiniteScrollViewModel(dependencyResolver.GetService<IInventoryDataService>()));
             dependencyResolver.RegisterViewModel(() => new InfiniteCollectionViewModel(dependencyResolver.GetService<IInventoryDataService>()));
+            dependencyResolver.RegisterViewModel(() => new RefreshCollectionViewModel(dependencyResolver.GetService<IInventoryDataService>()));
         }
 
         private static void RegisterServices(IMutableDependencyResolver mutableDependencyResolver)
         {
             mutableDependencyResolver.RegisterLazySingleton<ICoffeeService>(() => new CoffeeService(new CoffeeClientMock()));
-            mutableDependencyResolver.RegisterLazySingleton<Rocket.Surgery.Airframe.Synthetic.IDrinkService>(() => new DrinkDataService(new DrinkClientMock()));
+            mutableDependencyResolver.RegisterLazySingleton<IDrinkService>(() => new DrinkDataService(new DrinkClientMock()));
             mutableDependencyResolver.RegisterLazySingleton<IInventoryDataService>(() => new InventoryDataService(new CoffeeInventoryMock()));
             mutableDependencyResolver.RegisterLazySingleton<IPopupNavigation>(() => PopupNavigation.Instance);
 

@@ -13,7 +13,7 @@ namespace Showroom.Base
 
         protected ViewModelBase()
         {
-            InitializeData = ReactiveCommand.CreateFromTask(ExecuteInitializeData).DisposeWith(ViewModelSubscriptions);
+            InitializeData = ReactiveCommand.CreateFromTask(ExecuteInitializeData);
         }
 
         public virtual string Id { get; }

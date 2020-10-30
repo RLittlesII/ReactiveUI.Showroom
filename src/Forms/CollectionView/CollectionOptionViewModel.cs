@@ -13,6 +13,8 @@ namespace Showroom.CollectionView
 
         DetailNavigation,
 
-        InfiniteScroll
+        InfiniteScroll,
+
+        Refresh
     }
 }

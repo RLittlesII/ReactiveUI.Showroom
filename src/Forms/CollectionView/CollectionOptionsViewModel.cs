@@ -5,6 +5,7 @@ using ReactiveUI;
 using Sextant;
 using Showroom.Base;
 using Showroom.Coffee;
+using Showroom.CollectionView.Refresh;
 using Showroom.CollectionView.Scroll;
 using Showroom.Scroll;
 using Splat;
@@ -25,7 +26,8 @@ namespace Showroom.CollectionView
             {
                 new CollectionOptionViewModel{ Option = CollectionOption.DetailNavigation },
                 new CollectionOptionViewModel{ Option = CollectionOption.Search },
-                new CollectionOptionViewModel{ Option = CollectionOption.InfiniteScroll }
+                new CollectionOptionViewModel{ Option = CollectionOption.InfiniteScroll },
+                new CollectionOptionViewModel{ Option = CollectionOption.Refresh }
             };
         }
 
@@ -44,6 +46,8 @@ namespace Showroom.CollectionView
                     return _viewStackService.PushPage<SearchCollectionViewModel>();
                 case CollectionOption.InfiniteScroll:
                     return _viewStackService.PushPage<InfiniteCollectionViewModel>();
+                case CollectionOption.Refresh:
+                    return _viewStackService.PushPage<RefreshCollectionViewModel>();
                 default:
                     throw new ArgumentOutOfRangeException();
             }

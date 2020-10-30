@@ -17,9 +17,9 @@ namespace Showroom.CollectionView.Scroll
     public class InfiniteCollectionViewModel : ViewModelBase
     {
         private readonly IInventoryDataService _inventoryDataService;
-        private ReadOnlyObservableCollection<InfiniteItemViewModel> _inventory;
-        private BehaviorSubject<IPageRequest> _pagingSubject;
-        private int _pageSize = 20; 
+        private readonly ReadOnlyObservableCollection<InfiniteItemViewModel> _inventory;
+        private readonly BehaviorSubject<IPageRequest> _pagingSubject;
+        private readonly int _pageSize = 20; 
 
         public InfiniteCollectionViewModel(IInventoryDataService inventoryDataService)
         {

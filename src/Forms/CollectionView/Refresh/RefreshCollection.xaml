@@ -1,0 +1,39 @@
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
+                      xmlns:refresh="clr-namespace:Showroom.CollectionView.Refresh;assembly=Showroom"
+                      x:Class="Showroom.CollectionView.Refresh.RefreshCollection"
+                      x:TypeArguments="refresh:RefreshCollectionViewModel">
+    <ContentPage.Resources>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <SearchBar x:Name="Search" Grid.Row="0" Grid.Column="0" />
+            <Button x:Name="Load" Grid.Row="0" Grid.Column="1" Text="Load" />
+            <RefreshView
+                    x:Name="Refresh"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                <CollectionView
+                    x:Name="Collection"
+                    RemainingItemsThreshold="1"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <refresh:RefreshItemView />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </Grid>
+    </ContentPage.Content>
+</base:ContentPageBase>It'

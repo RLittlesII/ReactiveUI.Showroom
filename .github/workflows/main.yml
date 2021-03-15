@@ -36,7 +36,7 @@ jobs:
         xcode-version: 11.4.1
 
     - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v0.9.3
+      uses: gittools/actions/gitversion/setup@v0.9.9
       with:
           versionSpec: '5.3.x'
 

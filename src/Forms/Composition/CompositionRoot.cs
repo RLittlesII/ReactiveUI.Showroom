@@ -33,7 +33,9 @@ namespace Showroom.Composition
 
             Locator
                 .CurrentMutable
-                .RegisterPlatform(registrar);
+                .RegisterPlatform(registrar)
+                .RegisterNavigationView(() => new NavigationView(RxApp.MainThreadScheduler, RxApp.TaskpoolScheduler, ViewLocator.Current))
+                .RegisterParameterViewStackService();
 
             Locator.CurrentMutable.UseSerilogFullLogger(Log.Logger);
 

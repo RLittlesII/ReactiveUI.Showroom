@@ -2,8 +2,6 @@ using System;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using ReactiveUI;
-using Sextant.XamForms;
-using Splat;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 

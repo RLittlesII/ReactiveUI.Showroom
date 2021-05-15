@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Reactive;
 using ReactiveUI;
 using Rocket.Surgery.Airframe.ViewModels;
-using Sextant;
 using Sextant.Plugins.Popup;
 using Showroom.CollectionView.Scroll;
 using Splat;

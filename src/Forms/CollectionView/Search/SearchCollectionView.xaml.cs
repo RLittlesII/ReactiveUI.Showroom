@@ -19,10 +19,10 @@ namespace Showroom.CollectionView
                 .BindTo(this, x => x.SearchCollection.ItemsSource)
                 .DisposeWith(PageBindings);
 
-            this.WhenAnyValue(x => x.ViewModel.InitializeData)
+            this.WhenAnyValue(x => x.ViewModel.Initialize)
                 .Where(x => x != null)
                 .Select(x => Unit.Default)
-                .InvokeCommand(this, x => x.ViewModel.InitializeData)
+                .InvokeCommand(this, x => x.ViewModel.Initialize)
                 .DisposeWith(PageBindings);
         }
     }

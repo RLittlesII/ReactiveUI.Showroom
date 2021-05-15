@@ -2,9 +2,8 @@ using System;
 using System.Reactive;
 using ReactiveUI;
 using Rocket.Surgery.Airframe.Synthetic;
-using Showroom.Base;
 
-namespace Showroom.Search
+namespace Showroom.ListView
 {
     public class ItemViewModel : ItemViewModelBase
     {
@@ -19,12 +18,6 @@ namespace Showroom.Search
         }
 
         public ReactiveCommand<Unit, Unit> Remove { get; set; }
-
-        public Guid Id
-        {
-            get => _id;
-            set => this.RaiseAndSetIfChanged(ref _id, value);
-        }
 
         public string Title
         {

@@ -1,17 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using ReactiveUI;
-using Showroom.Base;
-using Showroom.Extensions;
 
-namespace Showroom.Coffee
+namespace Showroom.ListView
 {
     public class CoffeeCellViewModel : ItemViewModelBase
     {
         private string _name;
         private string _species;
-        private Guid _id;
         private IEnumerable<string> _regions;
         private string _image;
 
@@ -22,12 +18,6 @@ namespace Showroom.Coffee
             Species = species;
             Regions = regions;
             Image = image;
-        }
-
-        public Guid Id
-        {
-            get => _id;
-            set => this.RaiseAndSetIfChanged(ref _id, value);
         }
 
         public string Name

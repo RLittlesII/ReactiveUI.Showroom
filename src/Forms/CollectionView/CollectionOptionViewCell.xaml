@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<base:ContentViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+<showroom:ContentViewBase xmlns="http://xamarin.com/schemas/2014/forms"
                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                   xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
-                   xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
                    xmlns:collectionView="clr-namespace:Showroom.CollectionView;assembly=Showroom"
+                   xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
                    x:Class="Showroom.CollectionView.CollectionOptionViewCell"
                    x:TypeArguments="collectionView:CollectionOptionViewModel"
                    Margin="8">
         <StackLayout>
             <Label x:Name="Option" Text="Hello, world!" />
         </StackLayout>
-</base:ContentViewBase>
+</showroom:ContentViewBase>

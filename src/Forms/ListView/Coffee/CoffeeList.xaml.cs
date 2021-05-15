@@ -3,10 +3,9 @@ using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using ReactiveUI;
-using Showroom.Base;
 using Xamarin.Forms;
 
-namespace Showroom.Coffee
+namespace Showroom.ListView
 {
     public partial class CoffeeList : ContentPageBase<CoffeeListViewModel>
     {
@@ -14,10 +13,10 @@ namespace Showroom.Coffee
         {
             InitializeComponent();
 
-            this.WhenAnyValue(x => x.ViewModel.InitializeData)
+            this.WhenAnyValue(x => x.ViewModel.Initialize)
                 .Where(x => x != null)
                 .Select(x => Unit.Default)
-                .InvokeCommand(this, x => x.ViewModel.InitializeData)
+                .InvokeCommand(this, x => x.ViewModel.Initialize)
                 .DisposeWith(PageBindings);
 
             this.WhenAnyValue(x => x.ViewModel.Coffee)
@@ -29,7 +28,7 @@ namespace Showroom.Coffee
                 .Events()
                 .ItemTapped
                 .Select(itemTapped => itemTapped.Item as CoffeeCellViewModel)
-                .InvokeCommand(this, x => x.ViewModel.CoffeeDetails)
+                .InvokeCommand<CoffeeCellViewModel, CoffeeList>(this, x => x.ViewModel.CoffeeDetails)
                 .DisposeWith(PageBindings);
 
             CoffeeListView

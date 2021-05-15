@@ -2,15 +2,15 @@ using System;
 using System.Collections.ObjectModel;
 using System.Reactive;
 using ReactiveUI;
+using Rocket.Surgery.Airframe.ViewModels;
 using Sextant;
-using Showroom.Base;
 using Showroom.CollectionView;
 using Splat;
 using static Showroom.FontAwesomeIcons;
 
 namespace Showroom.Navigation
 {
-    public class NavigationRootViewModel : ViewModelBase
+    public class NavigationRootViewModel : NavigableViewModelBase
     {
         private readonly IParameterViewStackService _parameterViewStackService;
         private ObservableCollection<NavigationItemViewModel> _navigationItems;

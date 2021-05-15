@@ -2,16 +2,14 @@ using System;
 using System.Collections.ObjectModel;
 using System.Reactive;
 using ReactiveUI;
+using Rocket.Surgery.Airframe.ViewModels;
 using Sextant;
-using Showroom.Base;
-using Showroom.Coffee;
 using Showroom.CollectionView.Scroll;
-using Showroom.Scroll;
 using Splat;
 
 namespace Showroom.CollectionView
 {
-    public class CollectionOptionsViewModel : ViewModelBase
+    public class CollectionOptionsViewModel : NavigableViewModelBase
     {
         private readonly IParameterViewStackService _viewStackService;
 

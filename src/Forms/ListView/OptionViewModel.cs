@@ -1,5 +1,3 @@
-using Showroom.Base;
-
 namespace Showroom
 {
     public class OptionViewModel : ItemViewModelBase

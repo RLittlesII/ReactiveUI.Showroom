@@ -1,8 +1,6 @@
 using ReactiveUI;
-using ReactiveUI.XamForms;
-using Xamarin.Forms.Xaml;
 
-namespace Showroom.Search
+namespace Showroom.ListView
 {
     public partial class ItemViewCell
     {

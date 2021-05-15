@@ -3,21 +3,22 @@ using ReactiveUI;
 using Rg.Plugins.Popup.Contracts;
 using Rg.Plugins.Popup.Services;
 using Rocket.Surgery.Airframe.Synthetic;
+using Rocket.Surgery.Airframe.ViewModels;
 using Serilog;
 using Sextant;
 using Sextant.XamForms;
-using Showroom.Base;
-using Showroom.Coffee;
 using Showroom.CollectionView;
 using Showroom.CollectionView.Scroll;
+using Showroom.ListView;
 using Showroom.Navigation;
 using Showroom.Scroll;
-using Showroom.Search;
-using Showroom.ValueConverters;
 using Splat;
 using Splat.Serilog;
 using Xamarin.Forms;
-using CoffeeClientMock = Showroom.Coffee.CoffeeClientMock;
+using CoffeeClientMock = Showroom.ListView.CoffeeClientMock;
+using CoffeeDetail = Showroom.ListView.CoffeeDetail;
+using CoffeeList = Showroom.ListView.CoffeeList;
+using SearchList = Showroom.ListView.SearchList;
 
 namespace Showroom.Composition
 {
@@ -45,7 +46,7 @@ namespace Showroom.Composition
         }
 
         public Page StartPage<TViewModel>()
-            where TViewModel : ViewModelBase
+            where TViewModel : NavigableViewModelBase
         {
             Locator
                 .Current
@@ -67,7 +68,7 @@ namespace Showroom.Composition
             mutableDependencyResolver.RegisterView<CollectionView.CollectionOptions, CollectionOptionsViewModel>();
             mutableDependencyResolver.RegisterView<InfiniteScroll, InfiniteScrollViewModel>();
             mutableDependencyResolver.RegisterView<SearchList,SearchListViewModel>();
-            mutableDependencyResolver.RegisterView<NewItem, NewItemViewModel>();
+            mutableDependencyResolver.RegisterView<ListView.NewItem, NewItemViewModel>();
             mutableDependencyResolver.RegisterView<SearchCollectionView, SearchCollectionViewModel>();
             mutableDependencyResolver.RegisterView<InfiniteCollection, InfiniteCollectionViewModel>();
         }
@@ -91,7 +92,7 @@ namespace Showroom.Composition
         private static void RegisterServices(IMutableDependencyResolver mutableDependencyResolver)
         {
             mutableDependencyResolver.RegisterLazySingleton<ICoffeeService>(() => new CoffeeService(new CoffeeClientMock()));
-            mutableDependencyResolver.RegisterLazySingleton<Rocket.Surgery.Airframe.Synthetic.IDrinkService>(() => new DrinkDataService(new DrinkClientMock()));
+            mutableDependencyResolver.RegisterLazySingleton<IDrinkService>(() => new DrinkDataService(new DrinkClientMock()));
             mutableDependencyResolver.RegisterLazySingleton<IInventoryDataService>(() => new InventoryDataService(new CoffeeInventoryMock()));
             mutableDependencyResolver.RegisterLazySingleton<IPopupNavigation>(() => PopupNavigation.Instance);
 

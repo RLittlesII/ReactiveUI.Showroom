@@ -2,7 +2,6 @@ using System;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using ReactiveUI;
-using ReactiveUI.XamForms;
 using Sextant.XamForms;
 using Splat;
 using Xamarin.Essentials;
@@ -10,7 +9,7 @@ using Xamarin.Forms;
 
 namespace Showroom.Navigation
 {
-    public partial class NavigationRoot : ReactiveMasterDetailPage<NavigationRootViewModel>
+    public partial class NavigationRoot
     {
         private readonly CompositeDisposable _masterDetailBindings = new CompositeDisposable();
 

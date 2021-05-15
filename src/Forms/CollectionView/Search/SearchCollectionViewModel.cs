@@ -3,17 +3,14 @@ using System.Collections.ObjectModel;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Threading.Tasks;
 using DynamicData;
-using DynamicData.Binding;
-using DynamicData.PLinq;
 using ReactiveUI;
 using Rocket.Surgery.Airframe.Synthetic;
-using Showroom.Base;
+using Rocket.Surgery.Airframe.ViewModels;
 
 namespace Showroom.CollectionView
 {
-    public class SearchCollectionViewModel : ViewModelBase
+    public class SearchCollectionViewModel : NavigableViewModelBase
     {
         private readonly IDrinkService _drinkService;
         private readonly ReadOnlyObservableCollection<ItemViewModel> _items;
@@ -57,11 +54,11 @@ namespace Showroom.CollectionView
                 .Bind(out _items)
                 .DisposeMany()
                 .Subscribe()
-                .DisposeWith(ViewModelSubscriptions);
+                .DisposeWith(Garbage);
 
-            Add = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteAdd).DisposeWith(ViewModelSubscriptions);
-            Refresh = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteRefresh).DisposeWith(ViewModelSubscriptions);
-            Remove = ReactiveCommand.CreateFromObservable(ExecuteRemove, Observable.Return(true)).DisposeWith(ViewModelSubscriptions);
+            Add = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteAdd).DisposeWith(Garbage);
+            Refresh = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteRefresh).DisposeWith(Garbage);
+            Remove = ReactiveCommand.CreateFromObservable(ExecuteRemove, Observable.Return(true)).DisposeWith(Garbage);
         }
 
         public ReactiveCommand<EventArgs, Unit> Add { get; set; }
@@ -78,7 +75,8 @@ namespace Showroom.CollectionView
             set => this.RaiseAndSetIfChanged(ref _searchText, value);
         }
 
-        protected override async Task ExecuteInitializeData() => await _drinkService.Read();
+        protected override IObservable<Unit> ExecuteInitialize() =>
+            _drinkService.Read().Select(_ => Unit.Default);
 
         private IObservable<Unit> ExecuteAdd(EventArgs args) =>
             Observable
@@ -88,7 +86,7 @@ namespace Showroom.CollectionView
                         .Handle(Unit.Default)
                         .ObserveOn(RxApp.MainThreadScheduler)
                         .Subscribe(observer)
-                        .DisposeWith(ViewModelSubscriptions));
+                        .DisposeWith(Garbage));
 
         private IObservable<Unit> ExecuteRefresh(EventArgs args) =>
             Observable
@@ -99,7 +97,7 @@ namespace Showroom.CollectionView
                         .Delay(TimeSpan.FromSeconds(2), RxApp.TaskpoolScheduler)
                         .ObserveOn(RxApp.MainThreadScheduler)
                         .Subscribe(observer)
-                        .DisposeWith(ViewModelSubscriptions));
+                        .DisposeWith(Garbage));
 
         private IObservable<Unit> ExecuteRemove() => _drinkService.Delete(Guid.Empty);
     }

@@ -7,12 +7,11 @@ using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI;
 using Rocket.Surgery.Airframe.Synthetic;
-using Showroom.Base;
-using Splat;
+using Rocket.Surgery.Airframe.ViewModels;
 
-namespace Showroom.Search
+namespace Showroom.ListView
 {
-    public class SearchListViewModel : ViewModelBase
+    public class SearchListViewModel : NavigableViewModelBase
     {
         private readonly IDrinkService _drinkDataService;
         private readonly ReadOnlyObservableCollection<ItemViewModel> _items;
@@ -57,7 +56,7 @@ namespace Showroom.Search
             items
                 .MergeMany((item, id) => item.Remove)
                 .InvokeCommand(this, x => x.Remove)
-                .DisposeWith(ViewModelSubscriptions);
+                .DisposeWith(Garbage);
 
             var filter = items
                 .AutoRefresh(x => x.Id)
@@ -71,7 +70,7 @@ namespace Showroom.Search
                 .Bind(out _items)
                 .DisposeMany()
                 .Subscribe()
-                .DisposeWith(ViewModelSubscriptions);
+                .DisposeWith(Garbage);
 
             Add = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteAdd);
             Refresh = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteRefresh);
@@ -81,7 +80,7 @@ namespace Showroom.Search
                 .StartWith(false)
                 .DistinctUntilChanged()
                 .ToProperty(this, nameof(IsRefreshing), out _isRefreshing)
-                .DisposeWith(ViewModelSubscriptions);
+                .DisposeWith(Garbage);
         }
 
         public ReactiveCommandBase<PropertyValue<ItemViewModel, string>, object> Save { get; set; }
@@ -112,7 +111,7 @@ namespace Showroom.Search
                         .Handle(Unit.Default)
                         .ObserveOn(RxApp.MainThreadScheduler)
                         .Subscribe(observer)
-                        .DisposeWith(ViewModelSubscriptions));
+                        .DisposeWith(Garbage));
 
         private IObservable<Unit> ExecuteRefresh(EventArgs args) =>
             Observable
@@ -123,7 +122,7 @@ namespace Showroom.Search
                         .Delay(TimeSpan.FromSeconds(2), RxApp.TaskpoolScheduler)
                         .ObserveOn(RxApp.MainThreadScheduler)
                         .Subscribe(observer)
-                        .DisposeWith(ViewModelSubscriptions));
+                        .DisposeWith(Garbage));
 
         private IObservable<Unit> ExecuteRemove() => _drinkDataService.Delete(Guid.Empty);
     }

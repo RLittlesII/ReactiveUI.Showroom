@@ -1,22 +1,13 @@
-using System;
 using ReactiveUI;
-using Showroom.Base;
 
 namespace Showroom.Scroll
 {
     public class InventoryItemViewModel : ItemViewModelBase
     {
-        private Guid _id;
         private RoastType _roast;
         private string _brand;
         private string _coffee;
         private PackagedAs _packaging;
-
-        public Guid Id
-        {
-            get => _id;
-            set => this.RaiseAndSetIfChanged(ref _id, value);
-        }
 
         public string Brand
         {

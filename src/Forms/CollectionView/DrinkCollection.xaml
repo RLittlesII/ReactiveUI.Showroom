@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+<showroom:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
-                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
                       xmlns:collectionView="clr-namespace:Showroom.CollectionView;assembly=Showroom"
+                      xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
                       x:Class="Showroom.CollectionView.DrinkCollection"
                       x:TypeArguments="collectionView:DrinkCollectionViewModel">
     <ContentPage.Content>
@@ -21,4 +20,4 @@
             </CollectionView>
         </StackLayout>
     </ContentPage.Content>
-</base:ContentPageBase>
+</showroom:ContentPageBase>

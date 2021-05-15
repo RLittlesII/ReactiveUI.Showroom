@@ -3,17 +3,16 @@ using System.Collections.ObjectModel;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Threading.Tasks;
 using DynamicData;
 using ReactiveUI;
+using Rocket.Surgery.Airframe.ViewModels;
 using Sextant;
-using Showroom.Base;
-using Showroom.Coffee;
+using Showroom.ListView;
 using Splat;
 
 namespace Showroom.CollectionView
 {
-    public class DrinkCollectionViewModel : ViewModelBase
+    public class DrinkCollectionViewModel : NavigableViewModelBase
     {
         private readonly ICoffeeService _coffeeService;
         private readonly IParameterViewStackService _viewStackService;
@@ -24,7 +23,7 @@ namespace Showroom.CollectionView
             _viewStackService = Locator.Current.GetService<IParameterViewStackService>();
             _coffeeService = Locator.Current.GetService<ICoffeeService>();
 
-            CoffeeDetails = ReactiveCommand.CreateFromObservable<DrinkViewModel, Unit>(ExecuteNavigate).DisposeWith(ViewModelSubscriptions);
+            CoffeeDetails = ReactiveCommand.CreateFromObservable<DrinkViewModel, Unit>(ExecuteNavigate).DisposeWith(Garbage);
 
             _coffeeService
                 .ChangeSet
@@ -35,14 +34,14 @@ namespace Showroom.CollectionView
                 .Bind(out _coffeeList)
                 .DisposeMany()
                 .Subscribe()
-                .DisposeWith(ViewModelSubscriptions);
+                .DisposeWith(Garbage);
         }
 
         public ReactiveCommand<DrinkViewModel, Unit> CoffeeDetails { get; set; }
 
         public ReadOnlyObservableCollection<DrinkViewModel> Coffee => _coffeeList;
 
-        protected override async Task ExecuteInitializeData() => await _coffeeService.Read();
+        protected override IObservable<Unit> ExecuteInitialize() => _coffeeService.Read().Select(x => Unit.Default);
 
         private IObservable<Unit> ExecuteNavigate(DrinkViewModel viewModel) =>
             Observable

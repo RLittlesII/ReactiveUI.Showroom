@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using ReactiveUI;
-using Showroom.Base;
 using Showroom.Extensions;
 
 namespace Showroom.CollectionView
@@ -34,12 +33,6 @@ namespace Showroom.CollectionView
         }
 
         public ReactiveCommand<Unit, Unit> Toggle { get; set; }
-
-        public Guid Id
-        {
-            get => _id;
-            set => this.RaiseAndSetIfChanged(ref _id, value);
-        }
 
         public string Name
         {

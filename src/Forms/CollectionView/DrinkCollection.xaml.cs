@@ -4,14 +4,11 @@ using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using ReactiveUI;
-using Showroom.Base;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Showroom.CollectionView
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DrinkCollection : ContentPageBase<DrinkCollectionViewModel>
+    public partial class DrinkCollection
     {
         public DrinkCollection()
         {
@@ -23,11 +20,11 @@ namespace Showroom.CollectionView
                 .BindTo(this ,x => x.Drinks.ItemsSource)
                 .DisposeWith(PageBindings);
             
-            this.WhenAnyValue(x => x.ViewModel.InitializeData)
+            this.WhenAnyValue(x => x.ViewModel.Initialize)
                 .Where(x => x != null)
                 .Select(x => Unit.Default)
                 .ObserveOn(RxApp.MainThreadScheduler)
-                .InvokeCommand(this, x => x.ViewModel.InitializeData)
+                .InvokeCommand(this, x => x.ViewModel.Initialize)
                 .DisposeWith(PageBindings);
 
             var drinkSelected = Drinks

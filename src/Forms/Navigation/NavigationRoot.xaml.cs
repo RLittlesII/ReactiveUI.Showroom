@@ -13,11 +13,11 @@ namespace Showroom.Navigation
     {
         private readonly CompositeDisposable _masterDetailBindings = new CompositeDisposable();
 
-        public NavigationRoot()
+        public NavigationRoot(IDetailNavigation detailNavigation)
         {
             InitializeComponent();
-
-            Detail = Locator.Current.GetNavigationView("NavigationView");
+            detailNavigation.PushPage<MainViewModel>().Subscribe().DisposeWith(_masterDetailBindings);
+            Detail = (DetailView) detailNavigation.View;
 
             Menu.Events()
                 .ItemTapped

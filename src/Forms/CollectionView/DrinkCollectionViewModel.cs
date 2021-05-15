@@ -7,6 +7,7 @@ using DynamicData;
 using ReactiveUI;
 using Rocket.Surgery.Airframe.ViewModels;
 using Sextant;
+using Sextant.Plugins.Popup;
 using Showroom.ListView;
 using Splat;
 
@@ -15,12 +16,12 @@ namespace Showroom.CollectionView
     public class DrinkCollectionViewModel : NavigableViewModelBase
     {
         private readonly ICoffeeService _coffeeService;
-        private readonly IParameterViewStackService _viewStackService;
+        private readonly IPopupViewStackService _viewStackService;
         private readonly ReadOnlyObservableCollection<DrinkViewModel> _coffeeList;
 
         public DrinkCollectionViewModel()
         {
-            _viewStackService = Locator.Current.GetService<IParameterViewStackService>();
+            _viewStackService = Locator.Current.GetService<IPopupViewStackService>();
             _coffeeService = Locator.Current.GetService<ICoffeeService>();
 
             CoffeeDetails = ReactiveCommand.CreateFromObservable<DrinkViewModel, Unit>(ExecuteNavigate).DisposeWith(Garbage);

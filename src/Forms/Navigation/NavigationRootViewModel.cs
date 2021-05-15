@@ -4,6 +4,7 @@ using System.Reactive;
 using ReactiveUI;
 using Rocket.Surgery.Airframe.ViewModels;
 using Sextant;
+using Sextant.Plugins.Popup;
 using Showroom.CollectionView;
 using Splat;
 using static Showroom.FontAwesomeIcons;
@@ -12,12 +13,12 @@ namespace Showroom.Navigation
 {
     public class NavigationRootViewModel : NavigableViewModelBase
     {
-        private readonly IParameterViewStackService _parameterViewStackService;
+        private readonly IPopupViewStackService _parameterViewStackService;
         private ObservableCollection<NavigationItemViewModel> _navigationItems;
 
         public NavigationRootViewModel()
         {
-            _parameterViewStackService = Locator.Current.GetService<IParameterViewStackService>();
+            _parameterViewStackService = Locator.Current.GetService<IPopupViewStackService>();
 
             NavigationItems = new ObservableCollection<NavigationItemViewModel>
             {

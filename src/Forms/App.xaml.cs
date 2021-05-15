@@ -14,8 +14,7 @@ namespace Showroom
             InitializeComponent();
 
             var composition = new CompositionRoot(platformRegistrar);
-            composition.StartPage<MainViewModel>();
-            MainPage = new NavigationRoot();
+            MainPage = composition.StartPage<NavigationRootViewModel>();
         }
 
         protected override void OnStart()

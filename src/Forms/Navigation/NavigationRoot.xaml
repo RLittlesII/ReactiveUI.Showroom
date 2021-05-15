@@ -17,7 +17,11 @@
     </MasterDetailPage.Resources>
     
     <MasterDetailPage.Master>
-        <ContentPage x:Name="Master" Title="Master" Padding="0,0,0,0" IconImageSource="hamburger.png">
+        <ContentPage x:Name="Master"
+                     Title="Master"
+                     IconImageSource="hamburger.png"
+                     NavigationPage.HasBackButton="True"
+                     NavigationPage.BackButtonTitle="Back">
             <StackLayout
                 BackgroundColor="{StaticResource Gray}">
                 <ffimage:SvgCachedImage
@@ -40,5 +44,4 @@
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
-
 </reactiveui:ReactiveMasterDetailPage>

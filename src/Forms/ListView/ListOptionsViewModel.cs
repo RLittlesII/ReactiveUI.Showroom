@@ -4,7 +4,9 @@ using System.Reactive;
 using ReactiveUI;
 using Rocket.Surgery.Airframe.ViewModels;
 using Sextant;
+using Sextant.Plugins.Popup;
 using Showroom.ListView;
+using Showroom.Navigation;
 using Showroom.Scroll;
 using Splat;
 
@@ -12,11 +14,11 @@ namespace Showroom
 {
     public class ListOptionsViewModel : NavigableViewModelBase
     {
-        private readonly IParameterViewStackService _viewStackService;
+        private readonly IDetailNavigation _detailNavigation;
 
         public ListOptionsViewModel()
         {
-            _viewStackService = Locator.Current.GetService<IParameterViewStackService>();
+            _detailNavigation = Locator.Current.GetService<IDetailNavigation>();
 
             Navigate = ReactiveCommand.CreateFromObservable<OptionViewModel, Unit>(ExecuteNavigate);
 
@@ -38,11 +40,11 @@ namespace Showroom
             switch (arg.Option)
             {
                 case ListOption.Search:
-                    return _viewStackService.PushPage<SearchListViewModel>();
+                    return _detailNavigation.PushPage<SearchListViewModel>();
                 case ListOption.DetailNavigation:
-                    return _viewStackService.PushPage<CoffeeListViewModel>();
+                    return _detailNavigation.PushPage<CoffeeListViewModel>();
                 case ListOption.InfiniteScroll:
-                    return _viewStackService.PushPage<InfiniteScrollViewModel>();
+                    return _detailNavigation.PushPage<InfiniteScrollViewModel>();
                 default:
                     throw new ArgumentOutOfRangeException();
             }

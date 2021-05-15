@@ -9,16 +9,17 @@ using DynamicData.Binding;
 using ReactiveUI;
 using Rocket.Surgery.Airframe.ViewModels;
 using Sextant;
+using Sextant.Plugins.Popup;
 
 namespace Showroom.ListView
 {
     public class CoffeeListViewModel : NavigableViewModelBase
     {
         private readonly ICoffeeService _coffeeService;
-        private readonly IParameterViewStackService _viewStackService;
+        private readonly IPopupViewStackService _viewStackService;
         private readonly ReadOnlyObservableCollection<CoffeeCellViewModel> _coffeeList;
 
-        public CoffeeListViewModel(IParameterViewStackService parameterViewStackService, ICoffeeService coffeeService)
+        public CoffeeListViewModel(IPopupViewStackService parameterViewStackService, ICoffeeService coffeeService)
         {
             _viewStackService = parameterViewStackService;
             _coffeeService = coffeeService;

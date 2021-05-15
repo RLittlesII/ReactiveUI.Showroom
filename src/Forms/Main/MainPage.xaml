@@ -4,7 +4,8 @@
                       xmlns:local="clr-namespace:Showroom"
                       xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                       x:Class="Showroom.MainPage"
-                      x:TypeArguments="local:MainViewModel">
+                      x:TypeArguments="local:MainViewModel"
+                      NavigationPage.HasBackButton="True">
 
     <StackLayout>
         <!-- Place new controls here -->

@@ -4,7 +4,8 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
                       x:Class="Showroom.ListOptions"
-                      x:TypeArguments="showroom:ListOptionsViewModel">
+                      x:TypeArguments="showroom:ListOptionsViewModel"
+                      NavigationPage.HasBackButton="True">
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="Options">

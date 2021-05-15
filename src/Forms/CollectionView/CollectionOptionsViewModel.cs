@@ -4,6 +4,7 @@ using System.Reactive;
 using ReactiveUI;
 using Rocket.Surgery.Airframe.ViewModels;
 using Sextant;
+using Sextant.Plugins.Popup;
 using Showroom.CollectionView.Scroll;
 using Splat;
 
@@ -11,11 +12,11 @@ namespace Showroom.CollectionView
 {
     public class CollectionOptionsViewModel : NavigableViewModelBase
     {
-        private readonly IParameterViewStackService _viewStackService;
+        private readonly IPopupViewStackService _viewStackService;
 
         public CollectionOptionsViewModel()
         {
-            _viewStackService = Locator.Current.GetService<IParameterViewStackService>();
+            _viewStackService = Locator.Current.GetService<IPopupViewStackService>();
 
             Navigate = ReactiveCommand.CreateFromObservable<CollectionOptionViewModel, Unit>(ExecuteNavigate);
 

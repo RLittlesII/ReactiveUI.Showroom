@@ -13,12 +13,12 @@ namespace Showroom.Navigation
 {
     public class NavigationRootViewModel : NavigableViewModelBase
     {
-        private readonly IPopupViewStackService _parameterViewStackService;
+        private readonly IPopupViewStackService _detailNavigation;
         private ObservableCollection<NavigationItemViewModel> _navigationItems;
 
         public NavigationRootViewModel()
         {
-            _parameterViewStackService = Locator.Current.GetService<IPopupViewStackService>();
+            _detailNavigation = Locator.Current.GetService<IDetailNavigation>();
 
             NavigationItems = new ObservableCollection<NavigationItemViewModel>
             {
@@ -40,7 +40,7 @@ namespace Showroom.Navigation
         private IObservable<Unit> ExecuteNavigate(NavigationItemViewModel navigationItemViewModel)
         {
             var navigable = (INavigable)Locator.Current.GetService(navigationItemViewModel.IViewFor);
-            return _parameterViewStackService.PushPage(navigable, resetStack: true);
+            return _detailNavigation.PushPage(navigable);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Showroom.Composition;
+﻿using Sextant.XamForms;
+using Showroom.Composition;
 using Showroom.Navigation;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,7 +15,7 @@ namespace Showroom
             InitializeComponent();
 
             var composition = new CompositionRoot(platformRegistrar);
-            MainPage = composition.StartPage<NavigationRootViewModel>();
+            MainPage = (NavigationView) composition.StartPage<NavigationRootViewModel>();
         }
 
         protected override void OnStart()

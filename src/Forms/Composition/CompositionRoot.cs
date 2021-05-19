@@ -56,14 +56,15 @@ namespace Showroom.Composition
                 .PushPage<TViewModel>(resetStack: true, animate: false)
                 .Subscribe();
 
-            return Locator.Current.GetNavigationView("NavigationView");
+            return Locator.Current.GetNavigationView(nameof(NavigationView));
         }
 
         private static void RegisterViews(IDependencyResolver dependencyResolver)
         {
             dependencyResolver.RegisterLazySingleton<IDetailView>(() => new DetailView());
             dependencyResolver.RegisterView<MainPage, MainViewModel>();
-            dependencyResolver.RegisterView<NavigationRoot, NavigationRootViewModel>(() => new NavigationRoot(dependencyResolver.GetService<IDetailNavigation>()));
+            dependencyResolver.RegisterView<NavigationMenu, NavigationMenuViewModel>(() => new NavigationMenu(dependencyResolver.GetService<NavigationMenuViewModel>()));
+            dependencyResolver.RegisterView<NavigationRoot, NavigationRootViewModel>(() => new NavigationRoot(dependencyResolver.GetService<IDetailNavigation>(), dependencyResolver.GetService<IViewFor<NavigationMenuViewModel>>()));
             dependencyResolver.RegisterView<CoffeeList, CoffeeListViewModel>();
             dependencyResolver.RegisterView<CoffeeDetail, CoffeeDetailViewModel>();
             dependencyResolver.RegisterView<CollectionView.DrinkCollection, DrinkCollectionViewModel>();
@@ -80,6 +81,7 @@ namespace Showroom.Composition
         {
             dependencyResolver.RegisterViewModel<MainViewModel>();
             dependencyResolver.RegisterViewModel<NavigationRootViewModel>();
+            dependencyResolver.RegisterViewModel(() => new NavigationMenuViewModel(dependencyResolver.GetService<IDetailNavigation>()));
             dependencyResolver.RegisterViewModel<ListOptionsViewModel>();
             dependencyResolver.RegisterViewModel<CollectionOptionsViewModel>();
             dependencyResolver.RegisterViewModel(() => new CoffeeListViewModel(dependencyResolver.GetService<IPopupViewStackService>(), dependencyResolver.GetService<ICoffeeService>()));

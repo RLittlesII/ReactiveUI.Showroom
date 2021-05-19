@@ -4,7 +4,6 @@
                                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                                      xmlns:reactiveui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
                                      xmlns:showroom="clr-namespace:Showroom.Navigation;assembly=Showroom"
-                                     xmlns:ffimage="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
                                      x:Class="Showroom.Navigation.NavigationRoot"
                                      x:TypeArguments="showroom:NavigationRootViewModel"
                                      NavigationPage.HasBackButton="True">
@@ -15,30 +14,5 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </MasterDetailPage.Resources>
-    
-    <MasterDetailPage.Master>
-        <ContentPage x:Name="Master" Title="Master" Padding="0,0,0,0" IconImageSource="hamburger.png">
-            <StackLayout
-                BackgroundColor="{StaticResource Gray}">
-                <ffimage:SvgCachedImage
-                    Margin="0,20,0,0"
-                    HeightRequest="64"
-                    WidthRequest="64" 
-                    Source="{StaticResource RoundLogo}" />
-                <ListView x:Name="Menu"
-                          HasUnevenRows="True"
-                          RowHeight="80"
-                          SeparatorVisibility="None"
-                          BackgroundColor="{StaticResource DarkGray}"
-                          IsPullToRefreshEnabled="False">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <showroom:NavigationItemCell />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-        </ContentPage>
-    </MasterDetailPage.Master>
 
 </reactiveui:ReactiveMasterDetailPage>

@@ -7,11 +7,11 @@ using System.Reactive.Subjects;
 using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI;
-using Showroom.Base;
+using Rocket.Surgery.Airframe.ViewModels;
 
 namespace Showroom.Scroll
 {
-    public class InfiniteScrollViewModel : ViewModelBase
+    public class InfiniteScrollViewModel : NavigableViewModelBase
     {
         private readonly int pageSize = 20;
         private readonly ReadOnlyObservableCollection<InventoryItemViewModel> _items;
@@ -64,22 +64,22 @@ namespace Showroom.Scroll
                 .Bind(out _items)
                 .DisposeMany()
                 .Subscribe()
-                .DisposeWith(ViewModelSubscriptions);
+                .DisposeWith(Garbage);
 
             this.WhenAnyObservable(x => x.Refresh.IsExecuting)
                 .StartWith(false)
                 .DistinctUntilChanged()
                 .ToProperty(this, nameof(IsRefreshing), out _isRefreshing, deferSubscription: true)
-                .DisposeWith(ViewModelSubscriptions);
+                .DisposeWith(Garbage);
 
             this.WhenAnyObservable(x => x.Load.IsExecuting)
                 .ToProperty(this, nameof(IsLoading), out _isLoading, deferSubscription: true)
-                .DisposeWith(ViewModelSubscriptions);
+                .DisposeWith(Garbage);
 
             Refresh = ReactiveCommand.CreateFromObservable<EventArgs, Unit>(ExecuteRefresh);
             Load = ReactiveCommand.CreateFromObservable<int, Unit>(ExecuteLoad);
 
-            _pagingSubject.DisposeWith(ViewModelSubscriptions);
+            _pagingSubject.DisposeWith(Garbage);
         }
 
         public string Id { get; }

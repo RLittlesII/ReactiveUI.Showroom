@@ -8,7 +8,6 @@ namespace Showroom
 {
     public class ShowroomExceptionHandler : IObserver<Exception>, IEnableLogger
     {
-
         /// <inheritdoc/>
         public virtual void OnNext(Exception value)
         {
@@ -18,6 +17,8 @@ namespace Showroom
             }
 
             this.Log().Error(value);
+
+            RxApp.MainThreadScheduler.Schedule(() => throw value);
         }
 
         /// <inheritdoc/>

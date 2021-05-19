@@ -1,8 +1,4 @@
-using System.Reactive.Linq;
-using Showroom.Base;
-using DynamicData;
-
-namespace Showroom.Coffee
+namespace Showroom.ListView
 {
     public class CoffeeService : DataServiceBase<CoffeeDto>, ICoffeeService
     {

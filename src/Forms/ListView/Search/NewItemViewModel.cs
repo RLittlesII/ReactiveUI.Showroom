@@ -8,13 +8,13 @@ using System.Reactive.Threading.Tasks;
 using ReactiveUI;
 using Rg.Plugins.Popup.Contracts;
 using Rocket.Surgery.Airframe.Synthetic;
-using Showroom.Base;
+using Rocket.Surgery.Airframe.ViewModels;
 using Showroom.Extensions;
 using Splat;
 
-namespace Showroom.Search
+namespace Showroom.ListView
 {
-    public class NewItemViewModel : ViewModelBase
+    public class NewItemViewModel : NavigableViewModelBase
     {
         private readonly IPopupNavigation _popupNavigation;
         private readonly IDrinkService _drinkService;
@@ -27,8 +27,8 @@ namespace Showroom.Search
             _popupNavigation = Locator.Current.GetService<IPopupNavigation>();
             _drinkService = Locator.Current.GetService<IDrinkService>();
 
-            Save = ReactiveCommand.CreateFromObservable(ExecuteSave).DisposeWith(ViewModelSubscriptions);
-            Cancel = ReactiveCommand.CreateFromObservable(ExecuteCancel).DisposeWith(ViewModelSubscriptions);
+            Save = ReactiveCommand.CreateFromObservable(ExecuteSave).DisposeWith(Garbage);
+            Cancel = ReactiveCommand.CreateFromObservable(ExecuteCancel).DisposeWith(Garbage);
         }
 
         public ReactiveCommand<Unit, Unit> Save { get; set; }
@@ -56,13 +56,13 @@ namespace Showroom.Search
                     _drinkService
                         .Create(new DrinkDto {Title = Title, Type = SelectedType})
                         .Subscribe()
-                        .DisposeWith(ViewModelSubscriptions);
+                        .DisposeWith(Garbage);
 
                     return _popupNavigation
                         .PopAsync()
                         .ToObservable()
                         .Subscribe(observer)
-                        .DisposeWith(ViewModelSubscriptions);
+                        .DisposeWith(Garbage);
                 });
 
         private IObservable<Unit> ExecuteCancel() =>
@@ -72,6 +72,6 @@ namespace Showroom.Search
                         .PopAsync()
                         .ToObservable()
                         .Subscribe(observer)
-                        .DisposeWith(ViewModelSubscriptions));
+                        .DisposeWith(Garbage));
     }
 }

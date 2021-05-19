@@ -1,6 +1,5 @@
 using System;
 using ReactiveUI;
-using Showroom.Base;
 using Showroom.Scroll;
 
 namespace Showroom.CollectionView.Scroll

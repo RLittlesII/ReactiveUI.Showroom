@@ -1,8 +1,10 @@
 using System;
 using System.Reactive.Disposables;
 using ReactiveUI.XamForms;
+using Rocket.Surgery.Airframe.ViewModels;
 using Splat;
-namespace Showroom.Base
+
+namespace Showroom
 {
     public abstract class ContentPageBase<T> : ReactiveContentPage<T>, IDisposable, IEnableLogger
         where T : ViewModelBase

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+<showroom:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
-                      xmlns:base="clr-namespace:Showroom.Base;assembly=Showroom"
-                      xmlns:listView="clr-namespace:Showroom.Coffee;assembly=Showroom"
-                      x:Class="Showroom.Coffee.CoffeeList"
+                      xmlns:listView="clr-namespace:Showroom.ListView;assembly=Showroom"
+                      x:Class="Showroom.ListView.CoffeeList"
                       x:TypeArguments="listView:CoffeeListViewModel"
                       NavigationPage.HasBackButton="True" 
                       IconImageSource="hamburger.png">
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar x:Name="SearchBar"></SearchBar>
+            <SearchBar x:Name="SearchBar" />
             <ListView AutomationId="CoffeeListView" x:Name="CoffeeListView" HasUnevenRows="True" RowHeight="180" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -22,4 +21,4 @@
             <Button x:Name="Button" />
         </StackLayout>
     </ContentPage.Content>
-</base:ContentPageBase>
+</showroom:ContentPageBase>

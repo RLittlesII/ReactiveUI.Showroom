@@ -2,22 +2,20 @@ using System;
 using System.Collections.ObjectModel;
 using System.Reactive;
 using ReactiveUI;
-using Sextant;
-using Showroom.Base;
-using Showroom.Coffee;
+using Rocket.Surgery.Airframe.ViewModels;
+using Sextant.Plugins.Popup;
 using Showroom.CollectionView.Scroll;
-using Showroom.Scroll;
 using Splat;
 
 namespace Showroom.CollectionView
 {
-    public class CollectionOptionsViewModel : ViewModelBase
+    public class CollectionOptionsViewModel : NavigableViewModelBase
     {
-        private readonly IParameterViewStackService _viewStackService;
+        private readonly IPopupViewStackService _viewStackService;
 
         public CollectionOptionsViewModel()
         {
-            _viewStackService = Locator.Current.GetService<IParameterViewStackService>();
+            _viewStackService = Locator.Current.GetService<IPopupViewStackService>();
 
             Navigate = ReactiveCommand.CreateFromObservable<CollectionOptionViewModel, Unit>(ExecuteNavigate);
 

@@ -3,21 +3,23 @@ using ReactiveUI;
 using Rg.Plugins.Popup.Contracts;
 using Rg.Plugins.Popup.Services;
 using Rocket.Surgery.Airframe.Synthetic;
+using Rocket.Surgery.Airframe.ViewModels;
 using Serilog;
 using Sextant;
+using Sextant.Plugins.Popup;
 using Sextant.XamForms;
-using Showroom.Base;
-using Showroom.Coffee;
 using Showroom.CollectionView;
 using Showroom.CollectionView.Scroll;
+using Showroom.ListView;
 using Showroom.Navigation;
 using Showroom.Scroll;
-using Showroom.Search;
-using Showroom.ValueConverters;
 using Splat;
 using Splat.Serilog;
 using Xamarin.Forms;
-using CoffeeClientMock = Showroom.Coffee.CoffeeClientMock;
+using CoffeeClientMock = Showroom.ListView.CoffeeClientMock;
+using CoffeeDetail = Showroom.ListView.CoffeeDetail;
+using CoffeeList = Showroom.ListView.CoffeeList;
+using SearchList = Showroom.ListView.SearchList;
 
 namespace Showroom.Composition
 {
@@ -35,50 +37,54 @@ namespace Showroom.Composition
                 .CurrentMutable
                 .RegisterPlatform(registrar)
                 .RegisterNavigationView(() => new NavigationView(RxApp.MainThreadScheduler, RxApp.TaskpoolScheduler, ViewLocator.Current))
-                .RegisterParameterViewStackService();
+                .RegisterParameterViewStackService()
+                .UseSerilogFullLogger(Log.Logger);
 
-            Locator.CurrentMutable.UseSerilogFullLogger(Log.Logger);
-
-            RegisterServices(Locator.CurrentMutable);
-            RegisterViews(Locator.CurrentMutable);
+            RegisterServices(Locator.GetLocator());
+            RegisterViews(Locator.GetLocator());
             RegisterViewModels(Locator.GetLocator());
         }
 
         public Page StartPage<TViewModel>()
-            where TViewModel : ViewModelBase
+            where TViewModel : NavigableViewModelBase
         {
-            Locator
+            var popupViewStackService = Locator
                 .Current
-                .GetService<IParameterViewStackService>()
+                .GetService<IPopupViewStackService>();
+
+            popupViewStackService
                 .PushPage<TViewModel>(resetStack: true, animate: false)
                 .Subscribe();
 
-            return Locator.Current.GetNavigationView("NavigationView");
+            return Locator.Current.GetNavigationView(nameof(NavigationView));
         }
 
-        private static void RegisterViews(IMutableDependencyResolver mutableDependencyResolver)
+        private static void RegisterViews(IDependencyResolver dependencyResolver)
         {
-            mutableDependencyResolver.RegisterView<MainPage, MainViewModel>();
-            mutableDependencyResolver.RegisterView<NavigationRoot, NavigationRootViewModel>();
-            mutableDependencyResolver.RegisterView<CoffeeList, CoffeeListViewModel>();
-            mutableDependencyResolver.RegisterView<CoffeeDetail, CoffeeDetailViewModel>();
-            mutableDependencyResolver.RegisterView<CollectionView.DrinkCollection, DrinkCollectionViewModel>();
-            mutableDependencyResolver.RegisterView<ListOptions, ListOptionsViewModel>();
-            mutableDependencyResolver.RegisterView<CollectionView.CollectionOptions, CollectionOptionsViewModel>();
-            mutableDependencyResolver.RegisterView<InfiniteScroll, InfiniteScrollViewModel>();
-            mutableDependencyResolver.RegisterView<SearchList,SearchListViewModel>();
-            mutableDependencyResolver.RegisterView<NewItem, NewItemViewModel>();
-            mutableDependencyResolver.RegisterView<SearchCollectionView, SearchCollectionViewModel>();
-            mutableDependencyResolver.RegisterView<InfiniteCollection, InfiniteCollectionViewModel>();
+            dependencyResolver.RegisterLazySingleton<IDetailView>(() => new DetailView());
+            dependencyResolver.RegisterView<MainPage, MainViewModel>();
+            dependencyResolver.RegisterView<NavigationMenu, NavigationMenuViewModel>(() => new NavigationMenu(dependencyResolver.GetService<NavigationMenuViewModel>()));
+            dependencyResolver.RegisterView<NavigationRoot, NavigationRootViewModel>(() => new NavigationRoot(dependencyResolver.GetService<IDetailNavigation>(), dependencyResolver.GetService<IViewFor<NavigationMenuViewModel>>()));
+            dependencyResolver.RegisterView<CoffeeList, CoffeeListViewModel>();
+            dependencyResolver.RegisterView<CoffeeDetail, CoffeeDetailViewModel>();
+            dependencyResolver.RegisterView<CollectionView.DrinkCollection, DrinkCollectionViewModel>();
+            dependencyResolver.RegisterView<ListOptions, ListOptionsViewModel>();
+            dependencyResolver.RegisterView<CollectionView.CollectionOptions, CollectionOptionsViewModel>();
+            dependencyResolver.RegisterView<InfiniteScroll, InfiniteScrollViewModel>();
+            dependencyResolver.RegisterView<SearchList,SearchListViewModel>();
+            dependencyResolver.RegisterView<ListView.NewItem, NewItemViewModel>();
+            dependencyResolver.RegisterView<SearchCollectionView, SearchCollectionViewModel>();
+            dependencyResolver.RegisterView<InfiniteCollection, InfiniteCollectionViewModel>();
         }
 
         private static void RegisterViewModels(IDependencyResolver dependencyResolver)
         {
             dependencyResolver.RegisterViewModel<MainViewModel>();
             dependencyResolver.RegisterViewModel<NavigationRootViewModel>();
+            dependencyResolver.RegisterViewModel(() => new NavigationMenuViewModel(dependencyResolver.GetService<IDetailNavigation>()));
             dependencyResolver.RegisterViewModel<ListOptionsViewModel>();
             dependencyResolver.RegisterViewModel<CollectionOptionsViewModel>();
-            dependencyResolver.RegisterViewModel(() => new CoffeeListViewModel(dependencyResolver.GetService<IParameterViewStackService>(), dependencyResolver.GetService<ICoffeeService>()));
+            dependencyResolver.RegisterViewModel(() => new CoffeeListViewModel(dependencyResolver.GetService<IPopupViewStackService>(), dependencyResolver.GetService<ICoffeeService>()));
             dependencyResolver.RegisterViewModel(() => new CoffeeDetailViewModel(dependencyResolver.GetService<ICoffeeService>()));
             dependencyResolver.RegisterViewModel<DrinkCollectionViewModel>();
             dependencyResolver.RegisterViewModel(() => new SearchListViewModel(dependencyResolver.GetService<IDrinkService>()));
@@ -88,15 +94,32 @@ namespace Showroom.Composition
             dependencyResolver.RegisterViewModel(() => new InfiniteCollectionViewModel(dependencyResolver.GetService<IInventoryDataService>()));
         }
 
-        private static void RegisterServices(IMutableDependencyResolver mutableDependencyResolver)
+        private static void RegisterServices(IDependencyResolver dependencyResolver)
         {
-            mutableDependencyResolver.RegisterLazySingleton<ICoffeeService>(() => new CoffeeService(new CoffeeClientMock()));
-            mutableDependencyResolver.RegisterLazySingleton<Rocket.Surgery.Airframe.Synthetic.IDrinkService>(() => new DrinkDataService(new DrinkClientMock()));
-            mutableDependencyResolver.RegisterLazySingleton<IInventoryDataService>(() => new InventoryDataService(new CoffeeInventoryMock()));
-            mutableDependencyResolver.RegisterLazySingleton<IPopupNavigation>(() => PopupNavigation.Instance);
+            dependencyResolver.RegisterLazySingleton<IPopupViewStackService>(CreatePopupNavigation(dependencyResolver));
+            dependencyResolver.Register<IDetailNavigation>(CreateDetailNavigation(dependencyResolver));
+            dependencyResolver.RegisterLazySingleton<ICoffeeService>(() => new CoffeeService(new CoffeeClientMock()));
+            dependencyResolver.RegisterLazySingleton<IDrinkService>(() => new DrinkDataService(new DrinkClientMock()));
+            dependencyResolver.RegisterLazySingleton<IInventoryDataService>(() => new InventoryDataService(new CoffeeInventoryMock()));
+            dependencyResolver.RegisterLazySingleton<IPopupNavigation>(() => PopupNavigation.Instance);
 
             // https://reactiveui.net/docs/handbook/data-binding/value-converters#registration
             // mutableDependencyResolver.RegisterConstant(new CamelCaseSplitConverter(), typeof(IBindingTypeConverter));
+        }
+
+        private static Func<IDetailNavigation> CreateDetailNavigation(IDependencyResolver dependencyResolver)
+        {
+            return () => new DetailNavigation(dependencyResolver.GetService<IDetailView>(),
+                dependencyResolver.GetService<IPopupNavigation>(),
+                dependencyResolver.GetService<IViewLocator>(),
+                dependencyResolver.GetService<IViewModelFactory>());
+        }
+        private static Func<IPopupViewStackService> CreatePopupNavigation(IDependencyResolver dependencyResolver)
+        {
+            return () => new PopupViewStackService(dependencyResolver.GetService<IView>(nameof(NavigationView)),
+                dependencyResolver.GetService<IPopupNavigation>(), 
+                dependencyResolver.GetService<IViewLocator>(),
+                dependencyResolver.GetService<IViewModelFactory>());
         }
     }
 }

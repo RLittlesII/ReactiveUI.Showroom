@@ -1,12 +1,11 @@
 using System.Reactive;
 using System.Reactive.Linq;
 using ReactiveUI;
-using Rocket.Surgery.Airframe.Popup;
 using Xamarin.Forms;
 
-namespace Showroom.Search
+namespace Showroom.ListView
 {
-    public partial class NewItem : PopupPageBase<NewItemViewModel>
+    public partial class NewItem
     {
         public NewItem()
         {

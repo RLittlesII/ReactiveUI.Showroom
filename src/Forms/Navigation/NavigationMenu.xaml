@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xamForms:ReactiveContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                              xmlns:navigation="clr-namespace:Showroom.Navigation;assembly=Showroom"
+                              xmlns:forms="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+                              xmlns:xamForms="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+                              xmlns:showroom="clr-namespace:Showroom;assembly=Showroom"
+                              x:Class="Showroom.Navigation.NavigationMenu"
+                              x:TypeArguments="showroom:NavigationMenuViewModel"
+                              x:DataType="showroom:NavigationMenuViewModel"
+                              x:Name="Master"
+                              Title="Master"
+                              IconImageSource="hamburger.png">
+        <StackLayout
+            BackgroundColor="{StaticResource Gray}">
+            <forms:SvgCachedImage
+                Margin="0,20,0,0"
+                HeightRequest="64"
+                WidthRequest="64" 
+                Source="{StaticResource RoundLogo}" />
+            <ListView x:Name="Menu"
+                      ItemsSource="{Binding Items}"
+                      HasUnevenRows="True"
+                      RowHeight="80"
+                      SeparatorVisibility="None"
+                      BackgroundColor="{StaticResource DarkGray}"
+                      IsPullToRefreshEnabled="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <navigation:NavigationItemCell />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+</xamForms:ReactiveContentPage>

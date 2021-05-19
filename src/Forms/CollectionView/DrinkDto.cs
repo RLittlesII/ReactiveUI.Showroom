@@ -1,5 +1,4 @@
 using Rocket.Surgery.Airframe.Synthetic;
-using Showroom.Base;
 
 namespace Showroom.CollectionView
 {

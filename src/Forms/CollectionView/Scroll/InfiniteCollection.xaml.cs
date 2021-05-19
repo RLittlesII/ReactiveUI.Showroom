@@ -1,15 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ReactiveUI;
 using Splat;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Showroom.CollectionView.Scroll
 {
@@ -22,7 +17,7 @@ namespace Showroom.CollectionView.Scroll
             this.WhenAnyValue(x => x.ViewModel)
                 .Where(x => x != null)
                 .Select(x => Unit.Default)
-                .InvokeCommand(this, x => x.ViewModel.InitializeData)
+                .InvokeCommand(this, x => x.ViewModel.Initialize)
                 .DisposeWith(PageBindings);
 
             this.WhenAnyValue(x => x.ViewModel.Items)

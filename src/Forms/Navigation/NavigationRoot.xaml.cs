@@ -10,41 +10,28 @@ using Xamarin.Forms;
 
 namespace Showroom.Navigation
 {
-    public partial class NavigationRoot : ReactiveMasterDetailPage<NavigationRootViewModel>
+    public partial class NavigationRoot
     {
         private readonly CompositeDisposable _masterDetailBindings = new CompositeDisposable();
 
-        public NavigationRoot()
+        public NavigationRoot(IDetailNavigation detailNavigation, IViewFor<NavigationMenuViewModel> menuPage)
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+            detailNavigation.PushPage<MainViewModel>(resetStack: true, animate: false).Subscribe();
 
-            Detail = Locator.Current.GetNavigationView("NavigationView");
+            Detail = (NavigationView) detailNavigation.View;
+            Master = (ContentPage) menuPage;
 
-            Menu.Events()
-                .ItemTapped
-                .Select(x => x.Item as NavigationItemViewModel)
-                .InvokeCommand(this, x => x.ViewModel.Navigate)
-                .DisposeWith(_masterDetailBindings);
-
-            Menu.Events()
-                .ItemSelected
-                .Where(x => x != null)
-                .Subscribe(_ =>
-                {
-                    Menu.SelectedItem = null;
-                    IsPresented = false;
-                })
-                .DisposeWith(_masterDetailBindings);
+            menuPage
+                .WhenAnyObservable(x => x.ViewModel.Navigate)
+                .Select(_ => false)
+                .BindTo(this, x => x.IsPresented);
 
             Events
                 .DeviceDisplayMainDisplayInfoChanged
                 .Where(x => x.DisplayInfo.Orientation == DisplayOrientation.Landscape && Device.Idiom == TargetIdiom.Tablet)
                 .Subscribe(x => MasterBehavior = MasterBehavior.SplitOnLandscape)
-                .DisposeWith(_masterDetailBindings);
-
-            this.WhenAnyValue(x => x.ViewModel.NavigationItems)
-                .Where(x => x != null)
-                .BindTo(this, x => x.Menu.ItemsSource)
                 .DisposeWith(_masterDetailBindings);
 
             // HACK: [rlittlesii: July 04, 2020] This is a hack around a Xamarin.Forms iOS issue.

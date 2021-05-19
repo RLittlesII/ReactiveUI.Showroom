@@ -4,17 +4,15 @@ using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using System.Threading.Tasks;
 using DynamicData;
 using DynamicData.Binding;
-using DynamicData.PLinq;
 using ReactiveUI;
-using Showroom.Base;
+using Rocket.Surgery.Airframe.ViewModels;
 using Showroom.Scroll;
 
 namespace Showroom.CollectionView.Scroll
 {
-    public class InfiniteCollectionViewModel : ViewModelBase
+    public class InfiniteCollectionViewModel : NavigableViewModelBase
     {
         private readonly IInventoryDataService _inventoryDataService;
         private ReadOnlyObservableCollection<InfiniteItemViewModel> _inventory;
@@ -35,7 +33,7 @@ namespace Showroom.CollectionView.Scroll
                 .Bind(out _inventory)
                 .DisposeMany()
                 .Subscribe()
-                .DisposeWith(ViewModelSubscriptions);
+                .DisposeWith(Garbage);
 
             Load = ReactiveCommand.CreateFromObservable(ExecuteLoad);
         }
@@ -47,7 +45,8 @@ namespace Showroom.CollectionView.Scroll
 
         public ReadOnlyObservableCollection<InfiniteItemViewModel> Items => _inventory;
 
-        protected override async Task ExecuteInitializeData() => await _inventoryDataService.Read();
+        protected override IObservable<Unit> ExecuteInitialize() =>
+            _inventoryDataService.Read().Select(x => Unit.Default);
 
         private IObservable<Unit> ExecuteLoad() =>
             Observable

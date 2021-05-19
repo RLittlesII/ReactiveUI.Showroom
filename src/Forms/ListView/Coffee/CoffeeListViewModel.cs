@@ -4,29 +4,29 @@ using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI;
+using Rocket.Surgery.Airframe.ViewModels;
 using Sextant;
-using Showroom.Base;
+using Sextant.Plugins.Popup;
 
-namespace Showroom.Coffee
+namespace Showroom.ListView
 {
-    public class CoffeeListViewModel : ViewModelBase
+    public class CoffeeListViewModel : NavigableViewModelBase
     {
         private readonly ICoffeeService _coffeeService;
-        private readonly IParameterViewStackService _viewStackService;
+        private readonly IPopupViewStackService _viewStackService;
         private readonly ReadOnlyObservableCollection<CoffeeCellViewModel> _coffeeList;
 
-        public CoffeeListViewModel(IParameterViewStackService parameterViewStackService, ICoffeeService coffeeService)
+        public CoffeeListViewModel(IPopupViewStackService parameterViewStackService, ICoffeeService coffeeService)
         {
             _viewStackService = parameterViewStackService;
             _coffeeService = coffeeService;
 
-            CoffeeDetails = ReactiveCommand.CreateFromObservable<CoffeeCellViewModel, Unit>(ExecuteNavigate).DisposeWith(ViewModelSubscriptions);
+            CoffeeDetails = ReactiveCommand.CreateFromObservable<CoffeeCellViewModel, Unit>(ExecuteNavigate);
 
-            Refresh = ReactiveCommand.CreateFromTask(ExecuteRefresh).DisposeWith(ViewModelSubscriptions);
+            Refresh = ReactiveCommand.CreateFromTask(ExecuteRefresh);
 
             _coffeeService
                 .ChangeSet
@@ -35,9 +35,9 @@ namespace Showroom.Coffee
                 .Bind(out _coffeeList)
                 .DisposeMany()
                 .Subscribe()
-                .DisposeWith(ViewModelSubscriptions);
+                .DisposeWith(Garbage);
 
-            CoffeeDetails = ReactiveCommand.CreateFromObservable<CoffeeCellViewModel, Unit>(ExecuteNavigate).DisposeWith(ViewModelSubscriptions);
+            CoffeeDetails = ReactiveCommand.CreateFromObservable<CoffeeCellViewModel, Unit>(ExecuteNavigate).DisposeWith(Garbage);
 
         }
 
@@ -49,7 +49,7 @@ namespace Showroom.Coffee
 
         public ReadOnlyObservableCollection<CoffeeCellViewModel> Coffee => _coffeeList;
 
-        protected override async Task ExecuteInitializeData() => await _coffeeService.Read();
+        protected override IObservable<Unit> ExecuteInitialize() => _coffeeService.Read().Select(_ => Unit.Default);
 
         private IObservable<Unit> ExecuteNavigate(CoffeeCellViewModel viewModel) =>
             _viewStackService.PushPage<CoffeeDetailViewModel>(new NavigationParameter { { "Id", viewModel.Id } });

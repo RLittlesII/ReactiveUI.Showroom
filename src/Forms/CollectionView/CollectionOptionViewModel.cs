@@ -1,5 +1,3 @@
-using Showroom.Base;
-
 namespace Showroom.CollectionView
 {
     public class CollectionOptionViewModel : ItemViewModelBase

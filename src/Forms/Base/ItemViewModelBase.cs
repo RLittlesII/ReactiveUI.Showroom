@@ -1,9 +1,16 @@
+using System;
 using ReactiveUI;
 
-namespace Showroom.Base
+namespace Showroom
 {
     public abstract class ItemViewModelBase : ReactiveObject
     {
-        public virtual string Id { get; set; }
+        private Guid _id;
+
+        public Guid Id
+        {
+            get => _id;
+            set => this.RaiseAndSetIfChanged(ref _id, value);
+        }
     }
 }

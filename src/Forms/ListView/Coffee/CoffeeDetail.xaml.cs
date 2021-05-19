@@ -1,7 +1,4 @@
-using Showroom.Base;
-using Xamarin.Forms.Xaml;
-
-namespace Showroom.Coffee
+namespace Showroom.ListView
 {
     public partial class CoffeeDetail
     {
